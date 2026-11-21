@@ -40,7 +40,77 @@ footer a{color:var(--gold)}
 @media(max-width:600px){.hero h1{font-size:34px}header{justify-content:center}}
 </style>
 </head>
-<body>
+
+:root {
+ --gold:#55bce9;
+ --red:#a8e6b0;
+ --bg:#eaf8ff;
+ --card:#ffffff;
+}
+body {
+ margin:0;
+ background:#eaf8ff;
+ color:#183b48;
+ font-family:Arial,sans-serif;
+}
+header {
+ background:#dff5e8;
+ border-bottom:2px solid #55bce9;
+}
+.logo,h2,.card h3 {
+ color:#258bbd;
+}
+.card {
+ background:#ffffff;
+ border:1px solid #b8e8d0;
+ color:#183b48;
+}
+.panel {
+ background:#ffffff;
+ border:1px solid #b8e8d0;
+ color:#183b48;
+}
+.dark {
+ background:#dff5e8;
+ color:#183b48;
+ border:1px solid #a8dcbc;
+}
+input,select,textarea {
+ background:#fff;
+ color:#183b48;
+ border:1px solid #9bd9ee;
+}
+footer {
+ background:#dff5e8;
+ color:#183b48;
+}
+.hero {
+ background:linear-gradient(120deg,#bceaff,#d8f5df,#eaf8ff);
+ color:#183b48;
+}
+.hero p {color:#315d68}
+ 
+let products=[
+{id:1,name:"Premium Shirt",price:2200,category:"Clothes",emoji:"👕",image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600"},
+{id:2,name:"Casual T Shirt",price:1500,category:"Clothes",emoji:"👔",image:"https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=600"},
+{id:3,name:"Premium Sneakers",price:4500,category:"Shoes",emoji:"👟",image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600"},
+{id:4,name:"Classic Shoes",price:3800,category:"Shoes",emoji:"👞",image:"https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=600"},
+{id:5,name:"Luxury Watch",price:5500,category:"Watches",emoji:"⌚",image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"},
+{id:6,name:"Premium Sunglasses",price:1800,category:"Sunglasses",emoji:"🕶️",image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600"},
+{id:7,name:"Black Leather Wallet",price:2200,category:"Wallets",emoji:"👛",image:"https://images.unsplash.com/photo-1627123424574-724758594e93?w=600"},
+{id:8,name:"Black Leather Belt",price:1800,category:"Belts",emoji:"🖤",image:"https://images.unsplash.com/photo-1624222247344-550fb8f3f380?w=600"}
+];
+ 
+<div class="products">
+<button class="gold" onclick="category('Clothes')">Clothes</button>
+<button class="gold" onclick="category('Shoes')">Shoes</button>
+<button class="gold" onclick="category('Watches')">Watches</button>
+<button class="gold" onclick="category('Sunglasses')">Sunglasses</button>
+<button class="gold" onclick="category('Wallets')">Wallets</button>
+<button class="gold" onclick="category('Belts')">Belts</button>
+<button class="gold" onclick="category('All')">All Products</button>
+</div>
+ <body>
 
 <header>
 <div class="logo">AS STORE</div>
