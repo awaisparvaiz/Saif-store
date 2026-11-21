@@ -3,238 +3,109 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AS STORE</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AS STORE | Online Shopping</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial;background:#f5f5f5;color:#222}
-header{background:#111;color:white;text-align:center;padding:25px}
-header h1{color:gold;font-size:34px;margin:0}
-header p{margin-bottom:0}
-.container{max-width:1100px;margin:auto;padding:16px}
-h2{margin-top:25px}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px}
-.product{background:white;border-radius:12px;overflow:hidden;text-align:center;box-shadow:0 3px 10px #ddd;padding-bottom:15px}
-.product img{width:100%;height:180px;object-fit:cover}
-.product h3{margin:12px 5px}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f5f5;color:#222}
+header{background:#111;color:white;padding:20px;text-align:center}
+.logo{font-size:32px;color:#e6c46a;font-weight:bold;letter-spacing:3px}
+header p{font-size:12px;letter-spacing:2px}
+.search{width:90%;max-width:550px;padding:13px;border:0;border-radius:8px;margin:10px}
+nav{background:#222;display:flex;justify-content:center;gap:25px;padding:13px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-size:14px}
+.hero{background:linear-gradient(90deg,#111,#333);color:white;text-align:center;padding:55px 15px}
+.hero h1{color:#e6c46a;font-size:34px}
+.hero p{line-height:1.6}
+.btn{background:#c5a34a;color:#111;padding:12px 23px;border:0;border-radius:6px;font-weight:bold;text-decoration:none;display:inline-block;cursor:pointer}
+.container{max-width:1100px;margin:auto;padding:20px}
+h2{text-align:center}
+.categories,.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:15px}
+.category,.product{background:white;border-radius:10px;padding:18px;text-align:center;box-shadow:0 2px 8px #ddd}
+.category{font-weight:bold}
+.product{padding:10px}
+.product img{width:100%;height:170px;object-fit:cover;border-radius:8px}
 .price{color:#087a36;font-weight:bold}
-button{background:#111;color:white;border:0;padding:11px 16px;border-radius:7px;cursor:pointer}
-button:hover{background:#b8860b}
-.cart{background:white;margin-top:25px;padding:18px;border-radius:12px}
-input,select{width:100%;padding:12px;margin:7px 0;border:1px solid #ccc;border-radius:7px}
-.cart-item{padding:9px 0;border-bottom:1px solid #ddd}
-footer{background:#111;color:white;text-align:center;padding:20px;margin-top:30px}
-@media(max-width:400px){.product img{height:145px}}
-@media print{header,footer,.no-print{display:none!important}body{background:white}}
+footer{background:#111;color:white;text-align:center;padding:25px;margin-top:30px}
+footer a{color:#e6c46a}
 </style>
 </head>
-
 <body>
 
 <header>
-<h1>AS STORE</h1>
-<p>Premium Shopping | Best Prices</p>
+<div class="logo">AS STORE</div>
+<p>PREMIUM ONLINE SHOPPING</p>
+<input class="search" id="search" placeholder="Search your favourite products..." oninput="searchProducts()">
 </header>
 
-<div class="container">
+<nav>
+<a href="#">Home</a>
+<a href="#categories">Categories</a>
+<a href="#products">Products</a>
+<a href="#contact">Contact</a>
+<a href="#products">Shopping Bag 🛍️</a>
+</nav>
 
-<h2>Our Products</h2>
-<div class="products" id="products"></div>
+<section class="hero">
+<h1>WELCOME TO AS STORE</h1>
+<p>Discover your favourite products<br>Shop Smart. Shop with Style.</p>
+<a class="btn" href="#products">SHOP NOW</a>
+</section>
 
-<div class="cart">
-<h2>🛒 Your Shopping Bag</h2>
-<div id="cart">Your bag is empty</div>
-<h3 id="total">Total: Rs. 0</h3>
-
-<div class="no-print">
-<h2>Customer Details</h2>
-<input id="customer" placeholder="Your Name">
-<input id="phone" placeholder="Phone Number">
-<input id="address" placeholder="Full Delivery Address">
-
-<h3>Payment Method</h3>
-<select id="payment">
-<option>JazzCash</option>
-<option>Easypaisa</option>
-</select>
-
-<button onclick="checkout()">Generate Bill</button>
-</div>
-
-<div id="bill"></div>
+<div class="container" id="categories">
+<h2>SHOP BY CATEGORY</h2>
+<div class="categories">
+<div class="category">🧢<p>Caps</p></div>
+<div class="category">👕<p>Clothing</p></div>
+<div class="category">👟<p>Shoes</p></div>
+<div class="category">⌚<p>Watches</p></div>
+<div class="category">🕶️<p>Accessories</p></div>
+<div class="category">🎧<p>Electronics</p></div>
 </div>
 </div>
 
-<footer>
-<h3>AS STORE</h3>
-<p>Customer Support: 03290030892</p>
+<div class="container" id="products">
+<h2>FEATURED PRODUCTS</h2>
+<div class="products" id="productList"></div>
+</div>
+
+<footer id="contact">
+<h2>AS STORE</h2>
 <p>Thank you for shopping with us!</p>
+<p>Customer Support</p>
+<a href="https://wa.me/923290030892">WhatsApp: 03290030892</a>
+<p>© 2026 AS STORE</p>
 </footer>
 
 <script>
 const products=[
-{
-name:"Black Cap",
-price:800,
-image:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=85"
-},
-{
-name:"Baseball Cap",
-price:1000,
-image:"https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=600&q=85"
-},
-{
-name:"Premium Hoodie",
-price:2500,
-image:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=600&q=85"
-},
-{
-name:"T-Shirt",
-price:1200,
-image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=85"
-},
-{
-name:"Wallet",
-price:1200,
-image:"https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=600&q=85"
-},
-{
-name:"Sunglasses",
-price:1500,
-image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=600&q=85"
-},
-{
-name:"Smart Watch",
-price:3500,
-image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=85"
-},
-{
-name:"Headphones",
-price:2500,
-image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=85"
-},
-{
-name:"Shoes",
-price:3000,
-image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=85"
-}
+{name:"Black Cap",price:800,image:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500"},
+{name:"Baseball Cap",price:1000,image:"https://images.unsplash.com/photo-1521369909029-2afed882baee?w=500"},
+{name:"Premium Hoodie",price:2500,image:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500"},
+{name:"T-Shirt",price:1200,image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500"},
+{name:"Sunglasses",price:1500,image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500"},
+{name:"Smart Watch",price:3500,image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500"},
+{name:"Headphones",price:2500,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500"},
+{name:"Shoes",price:3000,image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"}
 ];
 
-let bag=[];
-
-function showProducts(){
-document.getElementById("products").innerHTML=products.map((p,i)=>`
+function showProducts(items){
+document.getElementById("productList").innerHTML=items.map(p=>`
 <div class="product">
-<img src="${p.image}" alt="${p.name}" loading="lazy">
+<img src="${p.image}" alt="${p.name}">
 <h3>${p.name}</h3>
 <p class="price">Rs. ${p.price}</p>
-<button onclick="add(${i})">Add to Bag</button>
-</div>
-`).join("");
+<button class="btn" onclick="alert('Shopping cart will be connected in Step 3')">View Product</button>
+</div>`).join("");
 }
 
-function add(i){
-let item=bag.find(x=>x.name===products[i].name);
-if(item)item.qty++;
-else bag.push({...products[i],qty:1});
-showCart();
+function searchProducts(){
+let q=document.getElementById("search").value.toLowerCase();
+showProducts(products.filter(p=>p.name.toLowerCase().includes(q)));
 }
 
-function change(i,n){
-bag[i].qty+=n;
-if(bag[i].qty<=0)bag.splice(i,1);
-showCart();
-}
-
-function showCart(){
-let subtotal=bag.reduce((s,p)=>s+p.price*p.qty,0);
-
-document.getElementById("cart").innerHTML=bag.length?
-bag.map((p,i)=>`
-<div class="cart-item">
-<strong>${p.name}</strong>
-<br>Rs. ${p.price}
-<button onclick="change(${i},-1)">−</button>
-${p.qty}
-<button onclick="change(${i},1)">+</button>
-</div>
-`).join(""):"Your bag is empty";
-
-document.getElementById("total").innerText="Total: Rs. "+subtotal;
-}
-
-function esc(s){
-return String(s).replace(/[&<>"']/g,c=>({
-"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-}[c]));
-}
-
-function checkout(){
-if(!bag.length){
-alert("Please add a product first");
-return;
-}
-
-let name=document.getElementById("customer").value.trim();
-let phone=document.getElementById("phone").value.trim();
-let address=document.getElementById("address").value.trim();
-let payment=document.getElementById("payment").value;
-
-if(!name||!phone||!address){
-alert("Please fill all customer details");
-return;
-}
-
-let subtotal=bag.reduce((s,p)=>s+p.price*p.qty,0);
-let delivery=200;
-let total=subtotal+delivery;
-
-let lines=bag.map(p=>
-`${p.name} x ${p.qty} = Rs. ${p.price*p.qty}`
-).join("\n");
-
-let bill=
-`AS STORE INVOICE
-Customer: ${name}
-Phone: ${phone}
-Address: ${address}
-
-${lines}
-
-Subtotal: Rs. ${subtotal}
-Delivery: Rs. ${delivery}
-TOTAL: Rs. ${total}
-Payment: ${payment}`;
-
-window.currentBill=bill;
-
-document.getElementById("bill").innerHTML=`
-<hr>
-<h2>AS STORE INVOICE</h2>
-<p>Customer: ${esc(name)}</p>
-<p>Phone: ${esc(phone)}</p>
-<p>Address: ${esc(address)}</p>
-<p>${bag.map(p=>esc(p.name)+" x "+p.qty+" = Rs. "+p.price*p.qty).join("<br>")}</p>
-<p>Subtotal: Rs. ${subtotal}</p>
-<p>Delivery: Rs. ${delivery}</p>
-<h2>Total: Rs. ${total}</h2>
-<p>Payment Method: ${esc(payment)}</p>
-<button class="no-print" onclick="window.print()">Print / Save Bill</button>
-<button class="no-print" onclick="sendWhatsApp()">Send Order on WhatsApp</button>
-`;
-}
-
-function sendWhatsApp(){
-let url="https://wa.me/923290030892?text="+
-encodeURIComponent(window.currentBill);
-window.open(url,"_blank");
-}
-
-showProducts();
-showCart();
+showProducts(products);
 </script>
 
 </body>
-  </html>
-  
+</html>
