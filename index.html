@@ -96,6 +96,176 @@ style="display:block;background:#25D366;color:white;text-align:center;padding:15
 <title>AS STORE | Online Shopping</title>
 <style>
 *{box-sizing:border-box}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AS STORE | Online Shopping</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f5f5f5;color:#222}
+header{background:#111;color:#d5ad45;padding:20px;text-align:center}
+header h1{margin:0;letter-spacing:3px}
+nav{background:#222;color:white;text-align:center;padding:12px}
+.container{max-width:1000px;margin:auto;padding:18px}
+h2{color:#a77e1d}
+.products{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.card{background:white;border-radius:12px;padding:12px;box-shadow:0 2px 8px #ddd}
+.card img{width:100%;height:150px;object-fit:cover;border-radius:8px}
+.card h3{margin:10px 0}
+.price{color:#a77e1d;font-weight:bold}
+button{border:0;border-radius:6px;padding:11px;cursor:pointer;background:#111;color:white}
+.add{background:#c49a36;color:#111;width:100%;font-weight:bold}
+.cart{background:white;padding:16px;border-radius:12px;margin-top:25px}
+.cart-item{border-bottom:1px solid #ddd;padding:12px 0}
+.qty button{padding:5px 10px}
+.total{font-size:21px;font-weight:bold;color:#a77e1d}
+input,textarea{width:100%;padding:12px;margin:7px 0;border:1px solid #ccc;border-radius:6px}
+.checkout{background:#168b46;width:100%;font-size:16px}
+.remove{background:#b52c2c}
+@media(min-width:650px){.products{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>AS STORE</h1>
+<p>YOUR STYLE, YOUR STORE</p>
+</header>
+<nav>
+ONLINE SHOPPING | <span id="bagCount">0</span> ITEMS IN BAG
+</nav>
+
+<div class="container">
+<h2>Our Products</h2>
+<div class="products" id="products"></div>
+
+<div class="cart">
+<h2>🛍️ My Shopping Bag</h2>
+<div id="cartItems">Your bag is empty.</div>
+<hr>
+<p>Subtotal: Rs. <span id="subtotal">0</span></p>
+<p>Delivery: Rs. <span id="delivery">0</span></p>
+<p class="total">Grand Total: Rs. <span id="total">0</span></p>
+
+<h2>Checkout</h2>
+<input id="name" placeholder="Customer Name">
+<input id="phone" placeholder="Mobile Number">
+<textarea id="address" placeholder="Complete Delivery Address"></textarea>
+<button class="checkout" onclick="checkout()">PLACE ORDER ON WHATSAPP</button>
+</div>
+</div>
+
+<script>
+const products=[
+{id:1,name:"Luxury Watch",price:3500,image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500"},
+{id:2,name:"Wireless Headphones",price:2500,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500"},
+{id:3,name:"Leather Wallet",price:1200,image:"https://images.unsplash.com/photo-1627123424574-724758594e93?w=500"},
+{id:4,name:"Sunglasses",price:1500,image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500"}
+];
+
+let cart=[];
+
+function showProducts(){
+document.getElementById("products").innerHTML=products.map(p=>`
+<div class="card">
+<img src="${p.image}" alt="${p.name}">
+<h3>${p.name}</h3>
+<p class="price">Rs. ${p.price.toLocaleString()}</p>
+<button class="add" onclick="addToBag(${p.id})">ADD TO BAG</button>
+</div>`).join("");
+}
+
+function addToBag(id){
+let found=cart.find(x=>x.id===id);
+if(found){found.qty++;}
+else{
+let p=products.find(x=>x.id===id);
+cart.push({...p,qty:1});
+}
+showCart();
+}
+
+function changeQty(id,amount){
+let item=cart.find(x=>x.id===id);
+if(!item)return;
+item.qty+=amount;
+if(item.qty<=0)cart=cart.filter(x=>x.id!==id);
+showCart();
+}
+
+function removeItem(id){
+cart=cart.filter(x=>x.id!==id);
+showCart();
+}
+
+function showCart(){
+let box=document.getElementById("cartItems");
+if(!cart.length)box.innerHTML="Your bag is empty.";
+else box.innerHTML=cart.map(x=>`
+<div class="cart-item">
+<b>${x.name}</b><br>
+Rs. ${x.price.toLocaleString()} × ${x.qty}
+<div class="qty">
+<button onclick="changeQty(${x.id},-1)">−</button>
+${x.qty}
+<button onclick="changeQty(${x.id},1)">+</button>
+<button class="remove" onclick="removeItem(${x.id})">Remove</button>
+</div>
+</div>`).join("");
+
+let count=cart.reduce((s,x)=>s+x.qty,0);
+let subtotal=cart.reduce((s,x)=>s+x.price*x.qty,0);
+let delivery=subtotal>0?200:0;
+
+document.getElementById("bagCount").textContent=count;
+document.getElementById("subtotal").textContent=subtotal.toLocaleString();
+document.getElementById("delivery").textContent=delivery;
+document.getElementById("total").textContent=(subtotal+delivery).toLocaleString();
+}
+
+function checkout(){
+if(!cart.length){alert("Please add products to your bag!");return;}
+
+let name=document.getElementById("name").value.trim();
+let phone=document.getElementById("phone").value.trim();
+let address=document.getElementById("address").value.trim();
+
+if(!name||!phone||!address){
+alert("Please fill all customer details!");
+return;
+}
+
+let subtotal=cart.reduce((s,x)=>s+x.price*x.qty,0);
+let delivery=200;
+let total=subtotal+delivery;
+
+let message=`AS STORE NEW ORDER
+Customer: ${name}
+Phone: ${phone}
+Address: ${address}
+
+PRODUCTS:
+${cart.map(x=>x.name+" x "+x.qty+" = Rs. "+(x.price*x.qty)).join("\n")}
+
+Subtotal: Rs. ${subtotal}
+Delivery: Rs. ${delivery}
+TOTAL: Rs. ${total}
+
+Payment: To be confirmed`;
+
+let whatsapp="923290030892";
+let url="https://wa.me/"+whatsapp+"?text="+encodeURIComponent(message);
+window.open(url,"_blank");
+}
+
+showProducts();
+showCart();
+</script>
+</body>
+</html>
 body{margin:0;font-family:Arial;background:#f5f5f5;color:#222}
 header{background:#111;color:#d5ad45;padding:20px;text-align:center}
 header h1{margin:0;letter-spacing:3px}
