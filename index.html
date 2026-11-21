@@ -1,149 +1,243 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AS STORE - Premium Shopping</title>
 <style>
-.slider-section{
-  padding:25px 12px;
-  background:#101010;
-  color:white;
-}
-.slider-title{
-  color:#d8b65c;
-  text-align:center;
-  letter-spacing:2px;
-}
-.slider-wrap{
-  position:relative;
-  display:flex;
-  align-items:center;
-}
-.product-slider{
-  display:flex;
-  gap:15px;
-  overflow-x:auto;
-  scroll-behavior:smooth;
-  scrollbar-width:none;
-  padding:15px 5px;
-  width:100%;
-}
-.product-slider::-webkit-scrollbar{display:none}
-.slide-card{
-  flex:0 0 180px;
-  background:#202020;
-  border:1px solid #806b38;
-  border-radius:12px;
-  overflow:hidden;
-  text-align:center;
-  padding-bottom:15px;
-}
-.slide-card img{
-  width:100%;
-  height:165px;
-  object-fit:cover;
-}
-.slide-card h3{font-size:15px}
-.slide-price{
-  color:#e5c66a;
-  font-weight:bold;
-}
-.slide-card button{
-  background:#d8b65c;
-  color:#111;
-  border:0;
-  padding:10px;
-  border-radius:5px;
-  cursor:pointer;
-}
-.slide-arrow{
-  background:#d8b65c;
-  color:#111;
-  border:0;
-  border-radius:50%;
-  width:38px;
-  height:38px;
-  font-size:22px;
-  cursor:pointer;
-  flex-shrink:0;
-}
-@media(max-width:450px){
-  .slide-card{flex-basis:155px}
-}
+*{box-sizing:border-box}
+body{margin:0;background:#101010;color:#fff;font-family:Arial}
+header{background:#080808;text-align:center;padding:20px}
+.logo{font-size:34px;color:#e5bd55;font-weight:bold;letter-spacing:4px}
+.tag{font-size:10px;letter-spacing:3px;color:#aaa;margin:8px}
+.search{width:95%;max-width:500px;padding:13px;border-radius:25px;border:1px solid #b99137;background:#222;color:white}
+nav{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;padding:15px;background:#1b1b1b}
+nav a{color:#e5bd55;text-decoration:none;font-size:13px}
+.hero{text-align:center;padding:60px 15px;background:linear-gradient(90deg,#000d,#270707cc),url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200') center/cover}
+.hero h1{font-size:36px;color:#e5bd55}
+.hero p{line-height:1.7}
+.btn{background:#c8a348;color:#111;border:0;padding:12px 20px;border-radius:5px;font-weight:bold;cursor:pointer}
+.red{background:#a51e26;color:white}
+.container{max-width:1100px;margin:auto;padding:24px 15px}
+.title{text-align:center;color:#e5bd55;letter-spacing:2px;margin-bottom:22px}
+.categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px}
+.category{background:#202020;border:1px solid #6f5426;padding:18px 5px;text-align:center;border-radius:9px;color:#e5bd55;cursor:pointer}
+.slider-wrap{display:flex;align-items:center;gap:8px}
+.slider{display:flex;gap:15px;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;padding:12px 2px;width:100%}
+.slider::-webkit-scrollbar{display:none}
+.product{flex:0 0 185px;background:#202020;border:1px solid #57451e;border-radius:10px;overflow:hidden;text-align:center;padding-bottom:14px}
+.product img{width:100%;height:170px;object-fit:cover}
+.product h3{font-size:15px}
+.price{color:#e5bd55;font-weight:bold}
+.arrow{background:#a51e26;color:white;border:0;border-radius:50%;width:36px;height:36px;font-size:23px;flex-shrink:0;cursor:pointer}
+.cart{background:#1c1c1c;border:1px solid #80652d;border-radius:10px;padding:20px;margin-top:20px}
+input,select{width:100%;padding:12px;margin:7px 0;background:#292929;color:white;border:1px solid #80652d;border-radius:5px}
+.cart-item{border-bottom:1px solid #444;padding:12px 0}
+.cart-item button{margin:4px;background:#a51e26;color:white;border:0;padding:7px 12px;border-radius:4px}
+.invoice{background:white;color:#111;padding:20px;margin-top:20px;border-radius:8px}
+footer{text-align:center;background:#080808;color:#aaa;padding:25px;margin-top:30px}
+footer a{color:#e5bd55}
+@media(max-width:450px){.product{flex-basis:155px}.hero h1{font-size:28px}}
+@media print{body{background:white;color:black}.no-print,header,nav,footer,.hero{display:none!important}.invoice{display:block!important}.cart{border:0;color:black;background:white}}
 </style>
+</head>
+<body>
 
-<section class="slider-section">
-<h2 class="slider-title">OUR COLLECTION</h2>
+<header>
+<div class="logo">AS STORE</div>
+<div class="tag">LUXURY • STYLE • QUALITY</div>
+<input class="search" id="search" placeholder="Search your products..." oninput="render()">
+</header>
 
-<div class="slider-wrap">
-<button class="slide-arrow" onclick="moveProducts(-1)">‹</button>
+<nav>
+<a href="#">HOME</a>
+<a href="#categories">CATEGORIES</a>
+<a href="#shop">SHOP</a>
+<a href="#billing">MY BAG 🛍️</a>
+<a href="#contact">CONTACT</a>
+</nav>
 
-<div class="product-slider" id="productSlider">
-
-<div class="slide-card">
-<img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500" alt="Black Cap">
-<h3>Black Cap</h3>
-<p class="slide-price">Rs. 800</p>
-<button onclick="add('Black Cap')">ADD TO BAG</button>
-</div>
-
-<div class="slide-card">
-<img src="https://images.unsplash.com/photo-1521369909029-2afed882baee?w=500" alt="Baseball Cap">
-<h3>Baseball Cap</h3>
-<p class="slide-price">Rs. 1000</p>
-<button onclick="add('Baseball Cap')">ADD TO BAG</button>
-</div>
-
-<div class="slide-card">
-<img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500" alt="Hoodie">
-<h3>Premium Hoodie</h3>
-<p class="slide-price">Rs. 2500</p>
-<button onclick="add('Premium Hoodie')">ADD TO BAG</button>
-</div>
-
-<div class="slide-card">
-<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500" alt="T Shirt">
-<h3>T-Shirt</h3>
-<p class="slide-price">Rs. 1200</p>
-<button onclick="add('T-Shirt')">ADD TO BAG</button>
-</div>
-
-<div class="slide-card">
-<img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500" alt="Sunglasses">
-<h3>Sunglasses</h3>
-<p class="slide-price">Rs. 1500</p>
-<button onclick="add('Sunglasses')">ADD TO BAG</button>
-</div>
-
-<div class="slide-card">
-<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500" alt="Smart Watch">
-<h3>Smart Watch</h3>
-<p class="slide-price">Rs. 3500</p>
-<button onclick="add('Smart Watch')">ADD TO BAG</button>
-</div>
-
-<div class="slide-card">
-<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" alt="Headphones">
-<h3>Headphones</h3>
-<p class="slide-price">Rs. 2500</p>
-<button onclick="add('Headphones')">ADD TO BAG</button>
-</div>
-
-<div class="slide-card">
-<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Shoes">
-<h3>Shoes</h3>
-<p class="slide-price">Rs. 3000</p>
-<button onclick="add('Shoes')">ADD TO BAG</button>
-</div>
-
-</div>
-
-<button class="slide-arrow" onclick="moveProducts(1)">›</button>
-</div>
+<section class="hero">
+<h1>WELCOME TO AS STORE</h1>
+<p>Discover Premium Products<br>Shop Smart. Shop in Style.</p>
+<button class="btn red" onclick="location.href='#shop'">SHOP NOW</button>
 </section>
 
+<div class="container no-print" id="categories">
+<h2 class="title">SHOP BY CATEGORY</h2>
+<div class="categories">
+<div class="category" onclick="filter('Cap')">🧢<br>Caps</div>
+<div class="category" onclick="filter('Clothing')">👕<br>Clothing</div>
+<div class="category" onclick="filter('Shoes')">👟<br>Shoes</div>
+<div class="category" onclick="filter('Watch')">⌚<br>Watches</div>
+<div class="category" onclick="filter('Accessories')">🕶️<br>Accessories</div>
+<div class="category" onclick="filter('Electronics')">🎧<br>Electronics</div>
+</div>
+</div>
+
+<div class="container" id="shop">
+<h2 class="title">FEATURED COLLECTION</h2>
+<div class="slider-wrap">
+<button class="arrow no-print" onclick="slide(-1)">‹</button>
+<div class="slider" id="products"></div>
+<button class="arrow no-print" onclick="slide(1)">›</button>
+</div>
+</div>
+
+<div class="container" id="billing">
+<div class="cart">
+<h2 class="title">🛒 SHOPPING BAG & BILLING</h2>
+<div id="cartItems">Your bag is empty.</div>
+<h3 id="subtotal">Subtotal: Rs. 0</h3>
+<h3 id="delivery">Delivery: Rs. 0</h3>
+<h2 id="total" style="color:#e5bd55">Total: Rs. 0</h2>
+
+<div class="no-print">
+<h3>Customer Information</h3>
+<input id="customer" placeholder="Customer Full Name">
+<input id="phone" placeholder="Mobile Number">
+<input id="address" placeholder="Complete Delivery Address">
+<h3>Payment Method</h3>
+<select id="payment">
+<option>JazzCash</option>
+<option>Easypaisa</option>
+</select>
+<button class="btn red" onclick="checkout()">GENERATE BILL</button>
+</div>
+
+<div id="invoice"></div>
+</div>
+</div>
+
+<footer id="contact">
+<h2 style="color:#e5bd55">AS STORE</h2>
+<p>Premium Shopping Experience</p>
+<p>Customer Support</p>
+<a href="https://wa.me/923290030892">WhatsApp: 032900030892</a>
+<p>© 2026 AS STORE</p>
+</footer>
+
 <script>
-function moveProducts(direction){
-  document.getElementById("productSlider").scrollBy({
-    left:direction*350,
-    behavior:"smooth"
-  });
+const products=[
+{name:"Black Cap",price:800,category:"Cap",image:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500"},
+{name:"Baseball Cap",price:1000,category:"Cap",image:"https://images.unsplash.com/photo-1521369909029-2afed882baee?w=500"},
+{name:"Premium Hoodie",price:2500,category:"Clothing",image:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500"},
+{name:"T-Shirt",price:1200,category:"Clothing",image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500"},
+{name:"Sunglasses",price:1500,category:"Accessories",image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500"},
+{name:"Smart Watch",price:3500,category:"Watch",image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500"},
+{name:"Headphones",price:2500,category:"Electronics",image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500"},
+{name:"Shoes",price:3000,category:"Shoes",image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"},
+{name:"Leather Wallet",price:1200,category:"Accessories",image:"https://images.unsplash.com/photo-1627123424574-724758594e93?w=500"}
+];
+
+let bag=[];
+let selected="";
+
+function render(){
+let q=document.getElementById("search").value.toLowerCase();
+let list=products.filter(p=>
+p.name.toLowerCase().includes(q)&&(!selected||p.category===selected)
+);
+document.getElementById("products").innerHTML=list.map(p=>`
+<div class="product">
+<img src="${p.image}" alt="${p.name}">
+<h3>${p.name}</h3>
+<p class="price">Rs. ${p.price}</p>
+<button class="btn red" onclick="add('${p.name}')">ADD TO BAG</button>
+</div>`).join("")||"<p>No products found.</p>";
 }
-                                         </script>
-  
+
+function filter(c){
+selected=c;
+document.getElementById("search").value="";
+render();
+location.hash="shop";
+}
+
+function slide(direction){
+document.getElementById("products").scrollBy({left:direction*400,behavior:"smooth"});
+}
+
+function add(name){
+let p=products.find(x=>x.name===name);
+let item=bag.find(x=>x.name===name);
+if(item)item.qty++;
+else bag.push({...p,qty:1});
+showCart();
+}
+
+function change(i,n){
+bag[i].qty+=n;
+if(bag[i].qty<=0)bag.splice(i,1);
+showCart();
+}
+
+function showCart(){
+let subtotal=bag.reduce((s,p)=>s+p.price*p.qty,0);
+let delivery=bag.length?200:0;
+document.getElementById("cartItems").innerHTML=bag.length?
+bag.map((p,i)=>`
+<div class="cart-item">
+<strong>${p.name}</strong> — Rs. ${p.price}
+<br>
+<button onclick="change(${i},-1)">−</button>
+${p.qty}
+<button onclick="change(${i},1)">+</button>
+<button onclick="change(${i},-${p.qty})">Remove</button>
+</div>`).join(""):"Your bag is empty.";
+document.getElementById("subtotal").innerText="Subtotal: Rs. "+subtotal;
+document.getElementById("delivery").innerText="Delivery: Rs. "+delivery;
+document.getElementById("total").innerText="Total: Rs. "+(subtotal+delivery);
+}
+
+function esc(s){
+return String(s).replace(/[&<>"']/g,c=>({
+"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+}[c]));
+}
+
+function checkout(){
+if(!bag.length){alert("Please add products first.");return;}
+let name=document.getElementById("customer").value.trim();
+let phone=document.getElementById("phone").value.trim();
+let address=document.getElementById("address").value.trim();
+let payment=document.getElementById("payment").value;
+if(!name||!phone||!address){alert("Please fill all details.");return;}
+
+let subtotal=bag.reduce((s,p)=>s+p.price*p.qty,0);
+let total=subtotal+200;
+let lines=bag.map(p=>p.name+" x "+p.qty+" = Rs. "+p.price*p.qty).join("\n");
+window.orderMessage=
+`AS STORE ORDER\nCustomer: ${name}\nPhone: ${phone}\nAddress: ${address}\n${lines}\nSubtotal: Rs. ${subtotal}\nDelivery: Rs. 200\nTOTAL: Rs. ${total}\nPayment: ${payment}`;
+
+document.getElementById("invoice").innerHTML=`
+<div class="invoice">
+<h2>AS STORE - INVOICE</h2>
+<p>Customer: ${esc(name)}</p>
+<p>Phone: ${esc(phone)}</p>
+<p>Address: ${esc(address)}</p>
+<hr>
+${bag.map(p=>`<p>${esc(p.name)} x ${p.qty} — Rs. ${p.price*p.qty}</p>`).join("")}
+<hr>
+<p>Subtotal: Rs. ${subtotal}</p>
+<p>Delivery: Rs. 200</p>
+<h2>Grand Total: Rs. ${total}</h2>
+<p>Payment: ${esc(payment)}</p>
+<div class="no-print">
+<button class="btn" onclick="window.print()">PRINT / SAVE BILL</button>
+<button class="btn red" onclick="sendOrder()">SEND ORDER ON WHATSAPP</button>
+</div>
+</div>`;
+}
+
+function sendOrder(){
+window.open("https://wa.me/923290030892?text="+encodeURIComponent(window.orderMessage),"_blank");
+}
+
+render();
+showCart();
+</script>
+</body>
+  </html>
+                                                     
