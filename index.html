@@ -3,60 +3,84 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AS STORE - Premium Shopping</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AS STORE | Luxury Fashion</title>
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#101010;color:#fff;font-family:Arial}
-header{background:#080808;text-align:center;padding:20px}
-.logo{font-size:34px;color:#e5bd55;font-weight:bold;letter-spacing:4px}
-.tag{font-size:10px;letter-spacing:3px;color:#aaa;margin:8px}
-.search{width:95%;max-width:500px;padding:13px;border-radius:25px;border:1px solid #b99137;background:#222;color:white}
-nav{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;padding:15px;background:#1b1b1b}
-nav a{color:#e5bd55;text-decoration:none;font-size:13px}
-.hero{text-align:center;padding:60px 15px;background:linear-gradient(90deg,#000d,#270707cc),url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200') center/cover}
-.hero h1{font-size:36px;color:#e5bd55}
-.hero p{line-height:1.7}
-.btn{background:#c8a348;color:#111;border:0;padding:12px 20px;border-radius:5px;font-weight:bold;cursor:pointer}
-.red{background:#a51e26;color:white}
-.container{max-width:1250px;margin:auto;padding:24px 15px}
-.title{text-align:center;color:#e5bd55;letter-spacing:2px;margin-bottom:22px}
-.categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px}
-.category{background:#202020;border:1px solid #6f5426;padding:18px 5px;text-align:center;border-radius:9px;color:#e5bd55;cursor:pointer}
-.category:hover{background:#a51e26;color:white}
-
-.slider-section{margin-bottom:35px}
-.slider-heading{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
-.slider-heading h2{color:#e5bd55;font-size:21px}
-.slider-wrap{display:flex;align-items:center;gap:10px}
-.slider{display:flex;gap:20px;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;padding:15px 5px 22px;width:100%}
+html{scroll-behavior:smooth}
+body{margin:0;background:#0b0b0b;color:#fff;font-family:Arial,sans-serif}
+:root{--gold:#d6ad55;--red:#a51e26;--panel:#171717}
+header{background:#050505;padding:18px 5%;border-bottom:1px solid #5c4825}
+.top{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.logo{font-size:34px;letter-spacing:5px;font-weight:900;color:var(--gold)}
+.tag{font-size:10px;letter-spacing:4px;color:#aaa;margin-top:6px}
+.search{width:100%;max-width:360px;padding:13px 18px;border-radius:30px;border:1px solid #80652d;background:#171717;color:white}
+nav{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;padding:15px;background:#111;border-bottom:1px solid #302719}
+nav a{color:var(--gold);text-decoration:none;font-size:12px;letter-spacing:1px}
+nav a:hover{color:white}
+.hero{min-height:390px;display:flex;align-items:center;justify-content:center;text-align:center;padding:45px 15px;background:linear-gradient(90deg,#000e,#1a0909bb),url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&auto=format&fit=crop') center/cover}
+.hero-content{max-width:700px}
+.hero small{color:var(--gold);letter-spacing:5px}
+.hero h1{font-size:clamp(35px,6vw,65px);margin:15px 0;color:white;letter-spacing:2px}
+.hero h1 span{color:var(--gold)}
+.hero p{color:#ddd;line-height:1.8}
+.btn{background:var(--gold);color:#111;border:0;padding:13px 23px;border-radius:4px;font-weight:bold;cursor:pointer}
+.btn:hover{filter:brightness(1.12)}
+.red{background:var(--red);color:white}
+.container{max-width:1350px;margin:auto;padding:38px 4%}
+.title{text-align:center;color:var(--gold);letter-spacing:3px;font-size:25px}
+.sub{text-align:center;color:#999;font-size:12px;letter-spacing:2px;margin-top:-10px;margin-bottom:30px}
+.categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:13px}
+.category{background:linear-gradient(145deg,#202020,#111);border:1px solid #5c4825;padding:20px 8px;text-align:center;border-radius:7px;color:var(--gold);cursor:pointer;font-size:14px;transition:.2s}
+.category:hover{border-color:var(--gold);background:#292015;transform:translateY(-3px)}
+.category span{display:block;font-size:27px;margin-bottom:9px}
+.section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.section-title h2{color:var(--gold);letter-spacing:2px;font-size:21px}
+.section-title small{color:#888}
+.slider-wrap{display:flex;align-items:center;gap:12px}
+.slider{display:flex;gap:20px;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;padding:14px 4px 22px;width:100%}
 .slider::-webkit-scrollbar{display:none}
-.product{flex:0 0 245px;background:#202020;border:1px solid #80652d;border-radius:12px;overflow:hidden;text-align:center;padding-bottom:18px;transition:.2s}
-.product:hover{transform:translateY(-4px);border-color:#e5bd55}
-.product img{width:100%;height:230px;object-fit:cover;background:#292929}
-.product h3{font-size:17px;margin:13px 5px}
-.price{color:#e5bd55;font-weight:bold;font-size:17px}
-.arrow{background:#a51e26;color:white;border:0;border-radius:50%;width:42px;height:42px;font-size:25px;flex-shrink:0;cursor:pointer}
-.cart{background:#1c1c1c;border:1px solid #80652d;border-radius:10px;padding:20px;margin-top:20px}
-input,select{width:100%;padding:12px;margin:7px 0;background:#292929;color:white;border:1px solid #80652d;border-radius:5px}
-.cart-item{border-bottom:1px solid #444;padding:12px 0}
-.cart-item button{margin:4px;background:#a51e26;color:white;border:0;padding:7px 12px;border-radius:4px}
-.invoice{background:white;color:#111;padding:20px;margin-top:20px;border-radius:8px}
-footer{text-align:center;background:#080808;color:#aaa;padding:25px;margin-top:30px}
-footer a{color:#e5bd55}
-
-@media(max-width:600px){
-.product{flex-basis:210px}
-.product img{height:205px}
-.hero h1{font-size:28px}
-.arrow{width:34px;height:34px;font-size:20px}
-.slider{gap:13px}
+.product{flex:0 0 270px;background:linear-gradient(145deg,#202020,#111);border:1px solid #59451f;border-radius:9px;overflow:hidden;text-align:left;transition:.25s}
+.product:hover{transform:translateY(-5px);border-color:var(--gold);box-shadow:0 10px 25px #000}
+.photo{height:285px;position:relative;background:#242424;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;display:block;transition:.4s}
+.product:hover .photo img{transform:scale(1.05)}
+.image-fallback{display:none;position:absolute;inset:0;align-items:center;justify-content:center;flex-direction:column;background:radial-gradient(circle,#393022,#101010 75%);color:var(--gold);text-align:center}
+.image-fallback svg{width:130px;height:130px}
+.image-fallback span{font-size:12px;letter-spacing:3px;margin-top:10px}
+.product-info{padding:16px}
+.product h3{font-size:16px;margin:0 0 10px}
+.price{font-size:18px;color:var(--gold);font-weight:bold;margin:0 0 14px}
+.product .btn{width:100%;padding:12px}
+.arrow{width:43px;height:43px;flex-shrink:0;border:1px solid #8d252b;border-radius:50%;background:var(--red);color:white;font-size:25px;cursor:pointer}
+.arrow:hover{background:#d02a33}
+.banner{background:linear-gradient(90deg,#170c0c,#201b11);border:1px solid #614b25;padding:30px 20px;text-align:center;border-radius:8px}
+.banner h2{color:var(--gold);letter-spacing:3px}
+.banner p{color:#bbb;line-height:1.7}
+.cart{background:#171717;border:1px solid #80652d;border-radius:10px;padding:22px;margin-top:10px}
+input,select{width:100%;padding:13px;margin:7px 0;background:#292929;color:white;border:1px solid #80652d;border-radius:5px}
+.cart-item{border-bottom:1px solid #444;padding:14px 0}
+.cart-item button{margin:5px 4px 0 0;background:var(--red);color:white;border:0;padding:8px 13px;border-radius:4px;cursor:pointer}
+.invoice{background:white;color:#111;padding:22px;margin-top:20px;border-radius:8px}
+footer{text-align:center;background:#050505;color:#999;padding:35px 15px;border-top:1px solid #59451f}
+footer h2{color:var(--gold);letter-spacing:4px}
+footer a{color:var(--gold)}
+.empty{color:#aaa;padding:25px}
+@media(max-width:650px){
+.top{justify-content:center;text-align:center}
+.logo{font-size:29px}
+.search{max-width:100%}
+nav{gap:15px}
+.hero{min-height:320px}
+.container{padding:28px 14px}
+.product{flex-basis:235px}
+.photo{height:250px}
+.arrow{width:35px;height:35px;font-size:20px}
 }
-
 @media print{
 body{background:white;color:black}
-.no-print,header,nav,footer,.hero{display:none!important}
+.no-print,header,nav,footer,.hero,.categories{display:none!important}
 .invoice{display:block!important}
 .cart{border:0;color:black;background:white}
 }
@@ -66,48 +90,57 @@ body{background:white;color:black}
 <body>
 
 <header>
+<div class="top">
+<div>
 <div class="logo">AS STORE</div>
 <div class="tag">LUXURY • STYLE • QUALITY</div>
-<input class="search" id="search" placeholder="Search your products..." oninput="render()">
+</div>
+<input class="search" id="search" placeholder="Search products..." oninput="render()">
+</div>
 </header>
 
 <nav>
 <a href="#">HOME</a>
 <a href="#categories">CATEGORIES</a>
-<a href="#shop">SHOP</a>
+<a href="#shop">COLLECTION</a>
 <a href="#billing">MY BAG 🛍️</a>
 <a href="#contact">CONTACT</a>
 </nav>
 
 <section class="hero">
-<h1>WELCOME TO AS STORE</h1>
-<p>Discover Premium Products<br>Shop Smart. Shop in Style.</p>
-<button class="btn red" onclick="location.href='#shop'">SHOP NOW</button>
+<div class="hero-content">
+<small>THE PREMIUM COLLECTION</small>
+<h1>STYLE THAT <span>DEFINES YOU</span></h1>
+<p>Discover premium fashion, accessories and everyday essentials at AS STORE.</p>
+<button class="btn red" onclick="location.href='#shop'">EXPLORE COLLECTION</button>
+</div>
 </section>
 
 <div class="container no-print" id="categories">
 <h2 class="title">SHOP BY CATEGORY</h2>
+<p class="sub">FIND YOUR PERFECT STYLE</p>
 <div class="categories">
-<div class="category" onclick="filter('Cap')">🧢<br>Caps</div>
-<div class="category" onclick="filter('Clothing')">👕<br>Shirts</div>
-<div class="category" onclick="filter('Pants')">👖<br>Pants</div>
-<div class="category" onclick="filter('Bags')">🎒<br>Bags</div>
-<div class="category" onclick="filter('Leather Belts')">🧷<br>Leather Belts</div>
-<div class="category" onclick="filter('Wallets')">👛<br>Wallets</div>
-<div class="category" onclick="filter('Shoes')">👟<br>Shoes</div>
-<div class="category" onclick="filter('Watch')">⌚<br>Watches</div>
-<div class="category" onclick="filter('Accessories')">🕶️<br>Accessories</div>
-<div class="category" onclick="filter('Electronics')">🎧<br>Electronics</div>
+<div class="category" onclick="filter('Cap')"><span>🧢</span>Caps</div>
+<div class="category" onclick="filter('Clothing')"><span>👕</span>Shirts</div>
+<div class="category" onclick="filter('Pants')"><span>👖</span>Pants</div>
+<div class="category" onclick="filter('Bags')"><span>🎒</span>Bags</div>
+<div class="category" onclick="filter('Leather Belts')"><span>🖤</span>Leather Belts</div>
+<div class="category" onclick="filter('Wallets')"><span>👛</span>Wallets</div>
+<div class="category" onclick="filter('Shoes')"><span>👟</span>Shoes</div>
+<div class="category" onclick="filter('Watch')"><span>⌚</span>Watches</div>
+<div class="category" onclick="filter('Accessories')"><span>🕶️</span>Accessories</div>
+<div class="category" onclick="filter('Electronics')"><span>🎧</span>Electronics</div>
 </div>
 </div>
 
 <div class="container" id="shop">
-
-<h2 class="title">FEATURED COLLECTION</h2>
+<h2 class="title">OUR COLLECTION</h2>
+<p class="sub">PREMIUM PRODUCTS • PREMIUM STYLE</p>
 
 <section class="slider-section">
-<div class="slider-heading">
-<h2>MEN'S FASHION</h2>
+<div class="section-title">
+<h2>01 / MEN'S FASHION</h2>
+<small>FASHION COLLECTION</small>
 </div>
 <div class="slider-wrap">
 <button class="arrow no-print" onclick="slide('fashionProducts',-1)">‹</button>
@@ -117,8 +150,9 @@ body{background:white;color:black}
 </section>
 
 <section class="slider-section">
-<div class="slider-heading">
-<h2>BAGS & ACCESSORIES</h2>
+<div class="section-title">
+<h2>02 / BAGS & ACCESSORIES</h2>
+<small>STYLE COLLECTION</small>
 </div>
 <div class="slider-wrap">
 <button class="arrow no-print" onclick="slide('accessoryProducts',-1)">‹</button>
@@ -127,11 +161,16 @@ body{background:white;color:black}
 </div>
 </section>
 
+<div class="banner">
+<h2>UPGRADE YOUR STYLE</h2>
+<p>Premium looks. Everyday confidence. Welcome to AS STORE.</p>
+<button class="btn" onclick="location.href='#categories'">SHOP CATEGORIES</button>
+</div>
 </div>
 
 <div class="container" id="billing">
 <div class="cart">
-<h2 class="title">🛒 SHOPPING BAG & BILLING</h2>
+<h2 class="title">SHOPPING BAG & BILLING</h2>
 <div id="cartItems">Your bag is empty.</div>
 <h3 id="subtotal">Subtotal: Rs. 0</h3>
 <h3 id="delivery">Delivery: Rs. 0</h3>
@@ -149,72 +188,88 @@ body{background:white;color:black}
 </select>
 <button class="btn red" onclick="checkout()">GENERATE BILL</button>
 </div>
-
 <div id="invoice"></div>
 </div>
 </div>
 
 <footer id="contact">
-<h2 style="color:#e5bd55">AS STORE</h2>
-<p>Premium Shopping Experience</p>
+<h2>AS STORE</h2>
+<p>LUXURY • STYLE • QUALITY</p>
 <p>Customer Support</p>
 <a href="https://wa.me/923290030892">WhatsApp: 03290030892</a>
-<p>© 2026 AS STORE</p>
+<p>© 2026 AS STORE. All Rights Reserved.</p>
 </footer>
 
 <script>
 const products=[
-
-{name:"Black Cap",price:800,category:"Cap",section:"fashion",image:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=600"},
-
-{name:"Baseball Cap",price:1000,category:"Cap",section:"fashion",image:"https://images.unsplash.com/photo-1521369909029-2afed882baee?w=600"},
-
-{name:"Premium Hoodie",price:2500,category:"Clothing",section:"fashion",image:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600"},
-
-{name:"T-Shirt",price:1200,category:"Clothing",section:"fashion",image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600"},
-
-{name:"Pants",price:1800,category:"Pants",section:"fashion",image:"https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=600"},
-
-{name:"Shoes",price:3000,category:"Shoes",section:"fashion",image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600"},
-
-{name:"Leather Belt",price:1000,category:"Leather Belts",section:"fashion",image:"https://images.unsplash.com/photo-1624222247344-550fb8c8b1f3?w=600"},
-
-{name:"Travel Bag",price:2500,category:"Bags",section:"accessory",image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600"},
-
-{name:"Black Leather Wallet",price:1200,category:"Wallets",section:"accessory",image:"https://images.unsplash.com/photo-1627123424574-724758594e93?w=600",black:true},
-
-{name:"Sunglasses",price:1500,category:"Accessories",section:"accessory",image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600"},
-
-{name:"Smart Watch",price:3500,category:"Watch",section:"accessory",image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"},
-
-{name:"Headphones",price:2500,category:"Electronics",section:"accessory",image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600"}
-
+{name:"Black Cap",price:800,category:"Cap",section:"fashion",image:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=700"},
+{name:"Baseball Cap",price:1000,category:"Cap",section:"fashion",image:"https://images.unsplash.com/photo-1521369909029-2afed882baee?w=700"},
+{name:"Premium Hoodie",price:2500,category:"Clothing",section:"fashion",image:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=700"},
+{name:"Premium T-Shirt",price:1200,category:"Clothing",section:"fashion",image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=700"},
+{name:"Men's Pants",price:1800,category:"Pants",section:"fashion",image:"https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=700"},
+{name:"Premium Shoes",price:3000,category:"Shoes",section:"fashion",image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700"},
+{name:"Black Leather Belt",price:1000,category:"Leather Belts",section:"accessory",image:"https://images.unsplash.com/photo-1624222247344-550fb8c8b1f3?w=700",fallback:"belt"},
+{name:"Premium Travel Bag",price:2500,category:"Bags",section:"accessory",image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=700",fallback:"bag"},
+{name:"Black Leather Wallet",price:1200,category:"Wallets",section:"accessory",image:"https://images.unsplash.com/photo-1627123424574-724758594e93?w=700",fallback:"wallet"},
+{name:"Sunglasses",price:1500,category:"Accessories",section:"accessory",image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=700"},
+{name:"Smart Watch",price:3500,category:"Watch",section:"accessory",image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700"},
+{name:"Headphones",price:2500,category:"Electronics",section:"accessory",image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=700"}
 ];
 
 let bag=[];
 let selected="";
 
-function render(){
-let q=document.getElementById("search").value.toLowerCase();
-
-let list=products.filter(p=>
-p.name.toLowerCase().includes(q)&&
-(!selected||p.category===selected)
-);
-
-showProducts("fashionProducts",list.filter(p=>p.section==="fashion"));
-showProducts("accessoryProducts",list.filter(p=>p.section==="accessory"));
+function fallbackGraphic(type){
+if(type==="belt"){
+return `<svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 70 Q100 35 188 70 L188 98 Q100 63 12 98Z" fill="#090909" stroke="#b99242" stroke-width="3"/>
+<path d="M84 61 L117 72 L117 105 L84 94Z" fill="none" stroke="#d6ad55" stroke-width="7"/>
+<path d="M84 61 L84 94 M117 72 L117 105" stroke="#d6ad55" stroke-width="4"/>
+<circle cx="48" cy="75" r="3" fill="#d6ad55"/><circle cx="61" cy="72" r="3" fill="#d6ad55"/>
+</svg>`;
+}
+if(type==="wallet"){
+return `<svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+<rect x="25" y="35" width="150" height="88" rx="10" fill="#080808" stroke="#b99137" stroke-width="3"/>
+<path d="M25 58 Q100 78 175 58" fill="none" stroke="#7d622d" stroke-width="3"/>
+<rect x="130" y="65" width="45" height="30" rx="5" fill="#202020" stroke="#d6ad55" stroke-width="3"/>
+<circle cx="150" cy="80" r="4" fill="#d6ad55"/>
+</svg>`;
+}
+return `<svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+<path d="M55 65 Q55 20 100 20 Q145 20 145 65" fill="none" stroke="#d6ad55" stroke-width="9"/>
+<rect x="25" y="55" width="150" height="85" rx="10" fill="#101010" stroke="#b99137" stroke-width="3"/>
+</svg>`;
 }
 
 function showProducts(id,list){
-document.getElementById(id).innerHTML=list.map(p=>`
+const target=document.getElementById(id);
+target.innerHTML=list.map((p,i)=>`
 <div class="product">
-<img class="${p.black?'wallet-image':''}" src="${p.image}" alt="${p.name}">
+<div class="photo">
+<img src="${p.image}" alt="${p.name}" loading="lazy"
+onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+<div class="image-fallback">
+${p.fallback?fallbackGraphic(p.fallback):fallbackGraphic("bag")}
+<span>${p.name.toUpperCase()}</span>
+</div>
+</div>
+<div class="product-info">
 <h3>${p.name}</h3>
-<p class="price">Rs. ${p.price}</p>
+<p class="price">Rs. ${p.price.toLocaleString("en-PK")}</p>
 <button class="btn red" onclick="add('${p.name}')">ADD TO BAG</button>
 </div>
-`).join("")||"<p>No products found.</p>";
+</div>
+`).join("")||'<div class="empty">No products found in this section.</div>';
+}
+
+function render(){
+let q=document.getElementById("search").value.toLowerCase();
+let list=products.filter(p=>
+p.name.toLowerCase().includes(q)&&(!selected||p.category===selected)
+);
+showProducts("fashionProducts",list.filter(p=>p.section==="fashion"));
+showProducts("accessoryProducts",list.filter(p=>p.section==="accessory"));
 }
 
 function filter(c){
@@ -225,10 +280,7 @@ location.hash="shop";
 }
 
 function slide(id,direction){
-document.getElementById(id).scrollBy({
-left:direction*650,
-behavior:"smooth"
-});
+document.getElementById(id).scrollBy({left:direction*650,behavior:"smooth"});
 }
 
 function add(name){
@@ -248,7 +300,6 @@ showCart();
 function showCart(){
 let subtotal=bag.reduce((s,p)=>s+p.price*p.qty,0);
 let delivery=bag.length?200:0;
-
 document.getElementById("cartItems").innerHTML=bag.length?
 bag.map((p,i)=>`
 <div class="cart-item">
@@ -259,7 +310,6 @@ ${p.qty}
 <button onclick="change(${i},1)">+</button>
 <button onclick="change(${i},-${p.qty})">Remove</button>
 </div>`).join(""):"Your bag is empty.";
-
 document.getElementById("subtotal").innerText="Subtotal: Rs. "+subtotal;
 document.getElementById("delivery").innerText="Delivery: Rs. "+delivery;
 document.getElementById("total").innerText="Total: Rs. "+(subtotal+delivery);
@@ -273,16 +323,11 @@ return String(s).replace(/[&<>"']/g,c=>({
 
 function checkout(){
 if(!bag.length){alert("Please add products first.");return;}
-
 let name=document.getElementById("customer").value.trim();
 let phone=document.getElementById("phone").value.trim();
 let address=document.getElementById("address").value.trim();
 let payment=document.getElementById("payment").value;
-
-if(!name||!phone||!address){
-alert("Please fill all details.");
-return;
-}
+if(!name||!phone||!address){alert("Please fill all details.");return;}
 
 let subtotal=bag.reduce((s,p)=>s+p.price*p.qty,0);
 let total=subtotal+200;
@@ -320,16 +365,12 @@ ${bag.map(p=>`<p>${esc(p.name)} x ${p.qty} — Rs. ${p.price*p.qty}</p>`).join("
 }
 
 function sendOrder(){
-window.open(
-"https://wa.me/923290030892?text="+encodeURIComponent(window.orderMessage),
-"_blank"
-);
+window.open("https://wa.me/923290030892?text="+encodeURIComponent(window.orderMessage),"_blank");
 }
 
 render();
 showCart();
 </script>
-
 </body>
   </html>
   
