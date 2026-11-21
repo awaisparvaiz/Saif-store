@@ -3,413 +3,255 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AS STORE | Premium Shopping</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AS STORE | Premium Collection</title>
 <style>
-:root{
---blue:#55bce9;
---green:#a8e6b0;
---bg:#eaf8ff;
---dark:#183b48;
---white:#fff;
-}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--dark);font-family:Arial,sans-serif}
-header{background:#dff5e8;padding:15px 4%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-bottom:2px solid var(--blue);position:sticky;top:0;z-index:10}
-.logo{font-size:27px;color:#258bbd;font-weight:bold;letter-spacing:3px}
-nav{display:flex;gap:6px;flex-wrap:wrap}
-button{cursor:pointer;border:0;border-radius:6px;padding:10px 13px;font-weight:bold}
-.gold{background:var(--blue);color:white}
-.green{background:var(--green);color:var(--dark)}
-.dark{background:#dff5e8;color:var(--dark);border:1px solid #a8dcbc}
-.red{background:#d65b68;color:white}
-.hero{padding:50px 15px;text-align:center;background:linear-gradient(120deg,#bceaff,#d8f5df,#eaf8ff)}
-.hero h1{font-size:44px;color:#258bbd}
-.hero p{color:#315d68}
-.banner{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:15px 5%}
-.banner div{background:white;padding:25px 8px;text-align:center;border:1px solid #a8dcbc;border-radius:10px}
-h2{color:#258bbd;text-align:center}
-section{padding:25px 5%}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:15px}
-.card{background:white;border:1px solid #b8e8d0;border-radius:10px;text-align:center;overflow:hidden;padding-bottom:14px}
-.pic{height:165px;background:#e0f4fa;display:flex;align-items:center;justify-content:center;font-size:60px}
-.pic img{width:100%;height:165px;object-fit:cover}
-.card h3{color:#258bbd}
-.card p{font-weight:bold}
-.panel{background:white;border:1px solid #b8e8d0;border-radius:10px;padding:17px;margin:15px 0}
-input,select,textarea{width:100%;padding:12px;margin:7px 0;background:white;color:#183b48;border:1px solid #9bd9ee;border-radius:5px}
-.item{padding:12px;border-bottom:1px solid #d8e9e9}
-.total{font-size:23px;color:#258bbd}
-.hidden{display:none!important}
-footer{background:#dff5e8;padding:25px;text-align:center;color:#183b48}
-footer a{color:#258bbd}
-.small{font-size:12px;color:#66818a}
-@media(max-width:600px){.hero h1{font-size:34px}header{justify-content:center}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f1faff;color:#173448}
+header{background:#c4edff;padding:17px 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5;box-shadow:0 2px 12px #0001}
+.logo{font-size:27px;font-weight:900;color:#07516c;letter-spacing:2px}
+button{cursor:pointer;border:0;border-radius:9px;padding:11px 16px;font-weight:bold}
+.primary{background:#087da5;color:white}
+.hero{padding:55px 15px;text-align:center;background:linear-gradient(120deg,#b9eaff,#d9f7d9)}
+.hero h1{font-size:39px;color:#07516c;margin-bottom:12px}
+.hero p{margin-bottom:20px}
+.section{padding:30px 5%}
+.heading{text-align:center;color:#07516c;margin-bottom:22px}
+.tools,.categories{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-bottom:18px}
+input,textarea,select{width:100%;padding:12px;border:1px solid #c5d8df;border-radius:8px;font-size:15px}
+.tools input{max-width:350px}
+.categories button{background:#d9f3e1;color:#174b43}
+.categories button.active{background:#087da5;color:white}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
+.card{background:white;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px #00000012}
+.card img{width:100%;height:190px;object-fit:cover;background:#e5f1f5}
+.info{padding:14px}
+.info h3{font-size:17px;margin-bottom:7px}
+.price{font-weight:bold;color:#07835c;font-size:19px;margin:10px 0}
+.info button{width:100%}
+.panel{max-width:850px;margin:25px auto;background:white;padding:22px;border-radius:14px;box-shadow:0 4px 15px #0001}
+.panel h2{color:#07516c;margin-bottom:15px}
+.cartrow{padding:12px 0;border-bottom:1px solid #e5e5e5;display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.qty button{padding:5px 10px;background:#d9f3e1}
+.bill{line-height:2;font-size:17px;margin-top:15px}
+.bill strong{font-size:21px;color:#07835c}
+form{display:grid;gap:12px}
+.paymentbox{padding:14px;background:#effaff;border-radius:10px;line-height:1.8}
+footer{text-align:center;background:#c4edff;padding:28px}
+@media(max-width:480px){.hero h1{font-size:29px}.products{grid-template-columns:repeat(2,minmax(0,1fr))}.card img{height:145px}}
 </style>
 </head>
 <body>
 
 <header>
-<div class="logo">AS STORE</div>
-<nav>
-<button class="dark" onclick="show('home')">Home</button>
-<button class="dark" onclick="show('shop')">Shop</button>
-<button class="dark" onclick="show('wishlist')">♡ Wishlist</button>
-<button class="dark" onclick="show('cart')">Bag (<span id="count">0</span>)</button>
-<button class="dark" onclick="show('account')">Account</button>
-<button class="dark" onclick="show('track')">Tracking</button>
-<button class="green" onclick="show('admin')">Admin</button>
-</nav>
+ <div class="logo">AS STORE</div>
+ <button class="primary" onclick="document.getElementById('cart').scrollIntoView()">🛒 Cart (<span id="count">0</span>)</button>
 </header>
 
-<main id="home">
-<div class="hero">
-<p>WELCOME TO PREMIUM SHOPPING</p>
-<h1>AS STORE</h1>
-<p>STYLE • QUALITY • LUXURY</p>
-<button class="gold" onclick="show('shop')">SHOP NOW</button>
-</div>
-
-<div class="banner">
-<div><h2>FASHION COLLECTION</h2><p>Clothes • Shoes • Belts</p></div>
-<div><h2>PREMIUM ACCESSORIES</h2><p>Watches • Wallets • Sunglasses</p></div>
-</div>
-
-<section>
-<h2>FEATURED COLLECTION</h2>
-<div id="featured" class="products"></div>
+<section class="hero">
+ <h1>AS STORE PREMIUM</h1>
+ <p>Discover Your Style • Premium Fashion • Best Collection</p>
+ <button class="primary" onclick="document.getElementById('shop').scrollIntoView()">SHOP NOW</button>
 </section>
 
-<section>
-<h2>SHOP BY CATEGORY</h2>
-<div class="products">
-<button class="gold" onclick="category('Clothes')">Clothes</button>
-<button class="gold" onclick="category('Shoes')">Shoes</button>
-<button class="gold" onclick="category('Watches')">Watches</button>
-<button class="gold" onclick="category('Sunglasses')">Sunglasses</button>
-<button class="gold" onclick="category('Wallets')">Wallets</button>
-<button class="gold" onclick="category('Belts')">Belts</button>
-<button class="green" onclick="category('Mobiles')">Mobiles</button>
-<button class="green" onclick="category('Accessories')">Accessories</button>
-<button class="gold" onclick="category('All')">All Products</button>
-</div>
-</section>
-</main>
-
-<section id="shop" class="hidden">
-<h2>OUR PRODUCTS</h2>
-<input id="search" placeholder="Search products..." oninput="renderProducts()">
-<div id="products" class="products"></div>
+<section class="section" id="shop">
+ <h2 class="heading">SHOP OUR COLLECTION</h2>
+ <div class="tools">
+  <input id="search" placeholder="Search products..." oninput="render()">
+ </div>
+ <div class="categories">
+  <button class="active" onclick="choose('All',this)">All</button>
+  <button onclick="choose('Shirts',this)">Shirts</button>
+  <button onclick="choose('Pants',this)">Pants</button>
+  <button onclick="choose('Watches',this)">Watches</button>
+  <button onclick="choose('Wallets',this)">Wallets</button>
+ </div>
+ <div class="products" id="productGrid"></div>
 </section>
 
-<section id="wishlist" class="hidden">
-<h2>MY WISHLIST ♡</h2>
-<div id="wishItems" class="products"></div>
+<section class="panel" id="cart">
+ <h2>🛒 Shopping Cart & Billing</h2>
+ <div id="cartItems">Your cart is empty.</div>
+ <div class="bill">
+  Subtotal: Rs. <span id="sub">0</span><br>
+  Delivery: Rs. <span id="ship">0</span><br>
+  Discount: Rs. <span id="off">0</span><br>
+  <strong>Grand Total: Rs. <span id="total">0</span></strong>
+ </div>
+ <div style="display:flex;gap:8px;margin-top:15px;flex-wrap:wrap">
+  <input id="coupon" placeholder="Coupon code AS10" style="max-width:220px">
+  <button class="primary" onclick="applyCoupon()">Apply Coupon</button>
+ </div>
+ <p id="couponMsg"></p>
 </section>
 
-<section id="cart" class="hidden">
-<h2>SHOPPING BAG & BILLING</h2>
-<div class="panel" id="cartItems"></div>
-<div class="panel">
-<input id="coupon" placeholder="Discount Coupon: AS10">
-<button class="gold" onclick="applyCoupon()">APPLY COUPON</button>
-<p id="couponMsg"></p>
-<p>Subtotal: Rs. <span id="subtotal">0</span></p>
-<p>Delivery: Rs. <span id="delivery">0</span></p>
-<h3 class="total">Total: Rs. <span id="total">0</span></h3>
-<button class="gold" onclick="show('checkout')">CHECKOUT</button>
-</div>
-</section>
-
-<section id="account" class="hidden">
-<h2>CUSTOMER ACCOUNT</h2>
-<div class="panel">
-<input id="accName" placeholder="Your Name">
-<input id="accPhone" placeholder="Mobile Number">
-<textarea id="accAddress" placeholder="Delivery Address"></textarea>
-<button class="gold" onclick="saveAccount()">SAVE DETAILS</button>
-<p id="accountMsg"></p>
-</div>
-</section>
-
-<section id="checkout" class="hidden">
-<h2>CHECKOUT & BILLING</h2>
-<div class="panel">
-<input id="customer" placeholder="Customer Name">
-<input id="phone" placeholder="Mobile Number">
-<textarea id="address" placeholder="Complete Delivery Address"></textarea>
-<label>Payment Method</label>
-<select id="payment">
-<option>JazzCash</option>
-<option>Easypaisa</option>
-<option>Bank Transfer</option>
-</select>
-<div class="panel">
-<h3>PAYMENT DETAILS</h3>
-<p>JazzCash: [ADD YOUR BUSINESS ACCOUNT]</p>
-<p>Easypaisa: [ADD YOUR BUSINESS ACCOUNT]</p>
-<p>Bank: [ADD BANK DETAILS]</p>
-<p class="small">Payment verification by store owner. COD is not available.</p>
-</div>
-<p>Delivery: Rs. <span id="checkoutDelivery">0</span></p>
-<h3 class="total">Total: Rs. <span id="checkoutTotal">0</span></h3>
-<button class="gold" onclick="placeOrder()">PLACE ORDER</button>
-</div>
-</section>
-
-<section id="track" class="hidden">
-<h2>ORDER TRACKING</h2>
-<div class="panel">
-<input id="trackId" placeholder="Enter Order ID">
-<button class="gold" onclick="trackOrder()">TRACK ORDER</button>
-<p id="trackResult"></p>
-</div>
-</section>
-
-<section id="reviews">
-<h2>CUSTOMER REVIEWS ⭐</h2>
-<div class="panel">
-<input id="reviewName" placeholder="Your Name">
-<select id="stars"><option>5 Stars</option><option>4 Stars</option><option>3 Stars</option></select>
-<textarea id="reviewText" placeholder="Write your review"></textarea>
-<button class="gold" onclick="addReview()">SUBMIT REVIEW</button>
-<div id="reviewList"></div>
-</div>
-</section>
-
-<section id="admin" class="hidden">
-<h2>ADMIN DASHBOARD 👑</h2>
-<div class="panel" id="login">
-<input id="adminUser" placeholder="Username">
-<input id="adminPass" type="password" placeholder="Password">
-<button class="gold" onclick="loginAdmin()">LOGIN</button>
-<p id="loginMsg"></p>
-</div>
-<div id="dashboard" class="hidden">
-<h3>Total Orders: <span id="orderCount">0</span></h3>
-<div id="orders"></div>
-<h3>ADD PRODUCT</h3>
-<input id="newName" placeholder="Product Name">
-<input id="newPrice" type="number" placeholder="Price">
-<select id="newCategory">
-<option>Clothes</option><option>Shoes</option><option>Watches</option>
-<option>Sunglasses</option><option>Wallets</option><option>Belts</option>
-<option>Mobiles</option><option>Accessories</option>
-</select>
-<input id="newImage" placeholder="Product Image URL">
-<button class="gold" onclick="addProduct()">ADD PRODUCT</button>
-<h3>MANAGE PRODUCTS</h3>
-<div id="manageProducts"></div>
-<button class="dark" onclick="logout()">LOGOUT</button>
-</div>
+<section class="panel" id="checkout">
+ <h2>💳 Secure Checkout</h2>
+ <form onsubmit="order(event)">
+  <input id="name" placeholder="Customer Full Name" required>
+  <input id="phone" placeholder="Mobile Number" type="tel" required>
+  <textarea id="address" placeholder="Complete Delivery Address" rows="3" required></textarea>
+  <label><b>Select Payment Method</b></label>
+  <select id="method" onchange="paymentInfo()" required>
+   <option value="">Choose Payment</option>
+   <option>JazzCash</option>
+   <option>Easypaisa</option>
+   <option>Bank Transfer</option>
+  </select>
+  <div class="paymentbox" id="paymentDetails">
+   Select your payment method.
+  </div>
+  <p style="font-size:13px;color:#555">Payment details must be verified before transferring money. Order confirmation is sent to WhatsApp.</p>
+  <button class="primary" type="submit">CONFIRM ORDER ON WHATSAPP</button>
+ </form>
 </section>
 
 <footer>
-<h2>AS STORE</h2>
-<p>Premium Shopping Experience</p>
-<p>Customer Support</p>
-<a href="https://wa.me/923290030892">WhatsApp: 03290030892</a>
-<p>© 2026 AS STORE</p>
+ <h2>AS STORE</h2>
+ <p>Premium Shopping Experience</p>
+ <p>WhatsApp Support: 03290030892</p>
+ <p>© 2026 AS STORE</p>
 </footer>
 
 <script>
-let products=[
-{id:1,name:"Premium Shirt",price:2200,category:"Clothes",emoji:"👕",image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600"},
-{id:2,name:"Casual T Shirt",price:1500,category:"Clothes",emoji:"👔",image:"https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=600"},
-{id:3,name:"Premium Sneakers",price:4500,category:"Shoes",emoji:"👟",image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600"},
-{id:4,name:"Classic Shoes",price:3800,category:"Shoes",emoji:"👞",image:"https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=600"},
-{id:5,name:"Luxury Watch",price:5500,category:"Watches",emoji:"⌚",image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"},
-{id:6,name:"Sunglasses",price:1800,category:"Sunglasses",emoji:"🕶️",image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600"},
-{id:7,name:"Black Leather Wallet",price:2200,category:"Wallets",emoji:"👛",image:"https://images.unsplash.com/photo-1627123424574-724758594e93?w=600"},
-{id:8,name:"Black Leather Belt",price:1800,category:"Belts",emoji:"🖤",image:"https://images.unsplash.com/photo-1624222247344-550fb8f3f380?w=600"},
-{id:9,name:"iPhone",price:50000,category:"Mobiles",emoji:"📱"},
-{id:10,name:"Android Mobile",price:25000,category:"Mobiles",emoji:"📱"},
-{id:11,name:"AirPods",price:3500,category:"Accessories",emoji:"🎧"},
-{id:12,name:"Mobile Charger",price:1200,category:"Accessories",emoji:"🔌"}
+const productList=[
+[1,"White Premium Shirt","Shirts",2200,"https://images.unsplash.com/photo-1603252109303-2751441dd157?w=600"],
+[2,"Black Formal Shirt","Shirts",2500,"https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600"],
+[3,"Blue Casual Shirt","Shirts",2300,"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600"],
+[4,"Office Dress Shirt","Shirts",2800,"https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600"],
+[5,"Premium T Shirt","Shirts",1500,"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600"],
+[6,"Blue Denim Jeans","Pants",3200,"https://images.unsplash.com/photo-1542272604-787c3835535d?w=600"],
+[7,"Black Casual Pants","Pants",2900,"https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=600"],
+[8,"Formal Dress Pants","Pants",3500,"https://images.unsplash.com/photo-1506629905607-d9b297d5b4e5?w=600"],
+[9,"Slim Fit Jeans","Pants",3300,"https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600"],
+[10,"Cargo Trousers","Pants",3100,"https://images.unsplash.com/photo-1517438476312-10d79c077509?w=600"],
+[11,"Classic Silver Watch","Watches",4500,"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"],
+[12,"Luxury Black Watch","Watches",5200,"https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600"],
+[13,"Sport Digital Watch","Watches",2800,"https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=600"],
+[14,"Golden Style Watch","Watches",4900,"https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=600"],
+[15,"Leather Strap Watch","Watches",4200,"https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?w=600"],
+[16,"Black Leather Wallet","Wallets",1800,"https://images.unsplash.com/photo-1627123424574-724758594e93?w=600"],
+[17,"Brown Classic Wallet","Wallets",1900,"https://images.unsplash.com/photo-1622560480654-d96214fdc887?w=600"],
+[18,"Premium Slim Wallet","Wallets",1600,"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600"],
+[19,"Leather Card Wallet","Wallets",1400,"https://images.unsplash.com/photo-1512412046876-f386342eddb3?w=600"],
+[20,"Executive Wallet","Wallets",2200,"https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=600"]
 ];
 
-let cart=[],wishlist=[],orders=[],reviews=[],discount=0;
-let deliveryCharge=200;
+let cartItems=[];
+let currentCategory="All";
+let couponOn=false;
+const delivery=200;
+const money=n=>n.toLocaleString("en-PK");
 
-function show(id){
-document.querySelectorAll('main,body>section').forEach(e=>e.classList.add('hidden'));
-document.getElementById(id).classList.remove('hidden');
-if(id==='shop')renderProducts();
-if(id==='cart')renderCart();
-if(id==='wishlist')renderWishlist();
-if(id==='checkout')updateBill();
-if(id==='admin')renderAdmin();
+function render(){
+ const term=document.getElementById("search").value.toLowerCase();
+ const list=productList.filter(p=>
+  (currentCategory==="All"||p[2]===currentCategory)&&
+  p[1].toLowerCase().includes(term)
+ );
+ document.getElementById("productGrid").innerHTML=list.map(p=>`
+ <div class="card">
+  <img src="${p[4]}" alt="${p[1]}" loading="lazy">
+  <div class="info">
+   <h3>${p[1]}</h3>
+   <small>${p[2]}</small>
+   <div class="price">Rs. ${money(p[3])}</div>
+   <button class="primary" onclick="add(${p[0]})">ADD TO BAG</button>
+  </div>
+ </div>`).join("")||"<p>No products found.</p>";
 }
-function category(c){
-show('shop');
-search.value='';
-renderProducts(c);
+
+function choose(cat,btn){
+ currentCategory=cat;
+ document.querySelectorAll(".categories button").forEach(b=>b.classList.remove("active"));
+ btn.classList.add("active");
+ render();
 }
-function renderProducts(filter='All'){
-let q=search.value.toLowerCase();
-let list=products.filter(p=>(filter==='All'||p.category===filter)&&p.name.toLowerCase().includes(q));
-productsBox(list);
+
+function add(id){
+ const item=cartItems.find(x=>x.id===id);
+ if(item)item.qty++;
+ else cartItems.push({id,qty:1});
+ update();
 }
-function productsBox(list){
-products.innerHTML=list.map(p=>`
-<div class="card">
-<div class="pic">${p.image?`<img src="${p.image}" onerror="this.style.display='none'">`:p.emoji}</div>
-<h3>${p.name}</h3>
-<p>Rs. ${p.price}</p>
-<button class="gold" onclick="addCart(${p.id})">ADD TO BAG</button>
-<button class="green" onclick="addWish(${p.id})">♡</button>
-</div>`).join('');
+
+function change(id,amount){
+ const item=cartItems.find(x=>x.id===id);
+ if(!item)return;
+ item.qty+=amount;
+ if(item.qty<=0)cartItems=cartItems.filter(x=>x.id!==id);
+ update();
 }
-function renderFeatured(){
-featured.innerHTML=products.slice(0,6).map(p=>`
-<div class="card">
-<div class="pic">${p.image?`<img src="${p.image}">`:p.emoji}</div>
-<h3>${p.name}</h3><p>Rs. ${p.price}</p>
-<button class="gold" onclick="addCart(${p.id})">ADD TO BAG</button>
-</div>`).join('');
+
+function subtotal(){
+ return cartItems.reduce((s,i)=>{
+  const p=productList.find(x=>x[0]===i.id);
+  return s+p[3]*i.qty;
+ },0);
 }
-function addCart(id){
-cart.push(id);count.textContent=cart.length;
-alert('Product added to Bag');
+
+function update(){
+ document.getElementById("cartItems").innerHTML=cartItems.length?
+ cartItems.map(i=>{
+  const p=productList.find(x=>x[0]===i.id);
+  return `<div class="cartrow">
+  <div><b>${p[1]}</b><br>Rs. ${money(p[3])} × ${i.qty}</div>
+  <div class="qty">
+   <button onclick="change(${i.id},-1)">−</button>
+   ${i.qty}
+   <button onclick="change(${i.id},1)">+</button>
+   <button onclick="change(${i.id},-${i.qty})">Remove</button>
+  </div></div>`;
+ }).join(""):"Your cart is empty.";
+
+ const sub=subtotal();
+ const discount=couponOn?Math.round(sub*.10):0;
+ const ship=cartItems.length?delivery:0;
+ document.getElementById("count").textContent=cartItems.reduce((s,i)=>s+i.qty,0);
+ document.getElementById("sub").textContent=money(sub);
+ document.getElementById("ship").textContent=money(ship);
+ document.getElementById("off").textContent=money(discount);
+ document.getElementById("total").textContent=money(sub+ship-discount);
 }
-function addWish(id){
-if(!wishlist.includes(id))wishlist.push(id);
-alert('Added to Wishlist');
-}
-function renderWishlist(){
-wishItems.innerHTML=wishlist.map(id=>{
-let p=products.find(x=>x.id===id);
-return p?`<div class="card"><h3>${p.name}</h3><p>Rs. ${p.price}</p>
-<button class="gold" onclick="addCart(${id})">ADD TO BAG</button>
-<button class="red" onclick="removeWish(${id})">REMOVE</button></div>`:'';
-}).join('');
-}
-function removeWish(id){wishlist=wishlist.filter(x=>x!==id);renderWishlist();}
-function renderCart(){
-let sum=0;
-cartItems.innerHTML=cart.map((id,i)=>{
-let p=products.find(x=>x.id===id);
-if(!p)return'';
-sum+=p.price;
-return `<div class="item">${p.name} - Rs. ${p.price}
-<button class="red" onclick="removeCart(${i})">REMOVE</button></div>`;
-}).join('');
-let final=Math.round(sum*(1-discount));
-subtotal.textContent=sum;
-delivery.textContent=cart.length?deliveryCharge:0;
-total.textContent=final+(cart.length?deliveryCharge:0);
-}
-function removeCart(i){
-cart.splice(i,1);count.textContent=cart.length;renderCart();
-}
+
 function applyCoupon(){
-if(coupon.value.trim().toUpperCase()==='AS10'){
-discount=.10;couponMsg.textContent='10% discount applied!';
-}else{discount=0;couponMsg.textContent='Invalid coupon';}
-renderCart();
+ couponOn=document.getElementById("coupon").value.trim().toUpperCase()==="AS10";
+ document.getElementById("couponMsg").textContent=couponOn?"10% discount applied!":"Invalid coupon code.";
+ update();
 }
-function updateBill(){
-renderCart();
-checkoutDelivery.textContent=delivery.textContent;
-checkoutTotal.textContent=total.textContent;
+
+function paymentInfo(){
+ const method=document.getElementById("method").value;
+ const box=document.getElementById("paymentDetails");
+ const details={
+ JazzCash:"<b>JazzCash Payment</b><br>Merchant Account: ADD YOUR VERIFIED JAZZCASH NUMBER<br>Account Name: ADD YOUR BUSINESS NAME",
+ Easypaisa:"<b>Easypaisa Payment</b><br>Merchant Account: ADD YOUR VERIFIED EASYPAISA NUMBER<br>Account Name: ADD YOUR BUSINESS NAME",
+ "Bank Transfer":"<b>Bank Transfer</b><br>Bank Name: ADD YOUR BANK<br>IBAN: ADD YOUR IBAN<br>Account Name: ADD YOUR BUSINESS NAME"
+ };
+ box.innerHTML=details[method]||"Select your payment method.";
 }
-function saveAccount(){
-localStorage.setItem('asAccount',JSON.stringify({
-name:accName.value,phone:accPhone.value,address:accAddress.value
-}));
-accountMsg.textContent='Details saved in this browser';
+
+function order(e){
+ e.preventDefault();
+ if(!cartItems.length){alert("Please add products to cart.");return;}
+ const name=document.getElementById("name").value.trim();
+ const phone=document.getElementById("phone").value.trim();
+ const address=document.getElementById("address").value.trim();
+ const method=document.getElementById("method").value;
+ const sub=subtotal();
+ const discount=couponOn?Math.round(sub*.10):0;
+ const total=sub+delivery-discount;
+ const items=cartItems.map(i=>{
+  const p=productList.find(x=>x[0]===i.id);
+  return `${p[1]} x ${i.qty} = Rs. ${p[3]*i.qty}`;
+ }).join("\n");
+ const message=`AS STORE NEW ORDER\nCustomer: ${name}\nPhone: ${phone}\nAddress: ${address}\n\n${items}\n\nSubtotal: Rs. ${sub}\nDelivery: Rs. ${delivery}\nDiscount: Rs. ${discount}\nTOTAL: Rs. ${total}\nPayment: ${method}\n\nPlease confirm my order.`;
+ window.open("https://wa.me/923290030892?text="+encodeURIComponent(message),"_blank");
 }
-function placeOrder(){
-if(!cart.length||!customer.value.trim()||!phone.value.trim()||!address.value.trim()){
-alert('Fill all details and add products');return;
-}
-let id='AS'+Date.now().toString().slice(-7);
-let order={
-id,name:customer.value,phone:phone.value,address:address.value,
-payment:payment.value,status:'Received',
-items:cart.map(x=>({...products.find(p=>p.id===x)})),
-amount:total.textContent
-};
-orders.push(order);
-let message=`AS STORE ORDER
-Order ID: ${id}
-Name: ${order.name}
-Phone: ${order.phone}
-Address: ${order.address}
-Payment: ${order.payment}
-Products:
-${order.items.map(p=>p.name+' Rs.'+p.price).join('\n')}
-Total: Rs.${order.amount}`;
-cart=[];count.textContent=0;discount=0;
-alert('Your Order ID: '+id);
-window.open('https://wa.me/923290030892?text='+encodeURIComponent(message),'_blank');
-show('track');trackId.value=id;trackOrder();
-}
-function trackOrder(){
-let o=orders.find(x=>x.id===trackId.value.trim());
-trackResult.textContent=o?'Order '+o.id+' | Status: '+o.status:'Order not found in this browser';
-}
-function addReview(){
-if(!reviewName.value.trim()||!reviewText.value.trim())return alert('Enter review');
-reviews.push({name:reviewName.value,text:reviewText.value,stars:stars.value});
-reviewList.innerHTML=reviews.map(r=>`
-<div class="item"><b>${r.name}</b> ⭐ ${r.stars}<p>${r.text}</p></div>`).join('');
-}
-function loginAdmin(){
-if(adminUser.value==='admin'&&adminPass.value==='ASstore@2026!'){
-login.classList.add('hidden');
-dashboard.classList.remove('hidden');
-renderAdmin();
-}else loginMsg.textContent='Incorrect username or password';
-}
-function logout(){
-dashboard.classList.add('hidden');
-login.classList.remove('hidden');
-}
-function renderAdmin(){
-orderCount.textContent=orders.length;
-ordersDiv.innerHTML=orders.map(o=>`
-<div class="item">#${o.id} | ${o.name} | Rs.${o.amount} | ${o.status}
-<button class="gold" onclick="changeStatus('${o.id}','Shipped')">SHIPPED</button>
-<button class="green" onclick="changeStatus('${o.id}','Delivered')">DELIVERED</button>
-</div>`).join('');
-manageProducts.innerHTML=products.map(p=>`
-<div class="item">${p.name} - Rs.${p.price}
-<button class="dark" onclick="editProduct(${p.id})">EDIT</button>
-<button class="red" onclick="deleteProduct(${p.id})">DELETE</button>
-</div>`).join('');
-}
-function changeStatus(id,status){
-let o=orders.find(x=>x.id===id);
-if(o){o.status=status;renderAdmin();}
-}
-function addProduct(){
-let name=newName.value.trim(),price=Number(newPrice.value);
-if(!name||price<=0)return alert('Enter valid details');
-products.push({
-id:Date.now(),name,price,category:newCategory.value,
-emoji:'🛍️',image:newImage.value.trim()
-});
-renderProducts();renderFeatured();renderAdmin();
-alert('Product added');
-}
-function deleteProduct(id){
-products=products.filter(p=>p.id!==id);
-cart=cart.filter(x=>x!==id);
-count.textContent=cart.length;
-renderProducts();renderFeatured();renderAdmin();
-}
-function editProduct(id){
-let p=products.find(x=>x.id===id);
-let name=prompt('New product name',p.name);
-if(name===null)return;
-let price=Number(prompt('New price',p.price));
-if(!name.trim()||price<=0)return alert('Invalid details');
-p.name=name.trim();p.price=price;
-renderProducts();renderFeatured();renderAdmin();
-}
-renderFeatured();
+
+render();
+update();
 </script>
 </body>
- </html>
- 
+                     </html>
+                     
