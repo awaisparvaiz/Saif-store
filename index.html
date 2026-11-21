@@ -1,111 +1,149 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AS STORE | Online Shopping</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f5f5f5;color:#222}
-header{background:#111;color:white;padding:20px;text-align:center}
-.logo{font-size:32px;color:#e6c46a;font-weight:bold;letter-spacing:3px}
-header p{font-size:12px;letter-spacing:2px}
-.search{width:90%;max-width:550px;padding:13px;border:0;border-radius:8px;margin:10px}
-nav{background:#222;display:flex;justify-content:center;gap:25px;padding:13px;flex-wrap:wrap}
-nav a{color:white;text-decoration:none;font-size:14px}
-.hero{background:linear-gradient(90deg,#111,#333);color:white;text-align:center;padding:55px 15px}
-.hero h1{color:#e6c46a;font-size:34px}
-.hero p{line-height:1.6}
-.btn{background:#c5a34a;color:#111;padding:12px 23px;border:0;border-radius:6px;font-weight:bold;text-decoration:none;display:inline-block;cursor:pointer}
-.container{max-width:1100px;margin:auto;padding:20px}
-h2{text-align:center}
-.categories,.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:15px}
-.category,.product{background:white;border-radius:10px;padding:18px;text-align:center;box-shadow:0 2px 8px #ddd}
-.category{font-weight:bold}
-.product{padding:10px}
-.product img{width:100%;height:170px;object-fit:cover;border-radius:8px}
-.price{color:#087a36;font-weight:bold}
-footer{background:#111;color:white;text-align:center;padding:25px;margin-top:30px}
-footer a{color:#e6c46a}
+.slider-section{
+  padding:25px 12px;
+  background:#101010;
+  color:white;
+}
+.slider-title{
+  color:#d8b65c;
+  text-align:center;
+  letter-spacing:2px;
+}
+.slider-wrap{
+  position:relative;
+  display:flex;
+  align-items:center;
+}
+.product-slider{
+  display:flex;
+  gap:15px;
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  scrollbar-width:none;
+  padding:15px 5px;
+  width:100%;
+}
+.product-slider::-webkit-scrollbar{display:none}
+.slide-card{
+  flex:0 0 180px;
+  background:#202020;
+  border:1px solid #806b38;
+  border-radius:12px;
+  overflow:hidden;
+  text-align:center;
+  padding-bottom:15px;
+}
+.slide-card img{
+  width:100%;
+  height:165px;
+  object-fit:cover;
+}
+.slide-card h3{font-size:15px}
+.slide-price{
+  color:#e5c66a;
+  font-weight:bold;
+}
+.slide-card button{
+  background:#d8b65c;
+  color:#111;
+  border:0;
+  padding:10px;
+  border-radius:5px;
+  cursor:pointer;
+}
+.slide-arrow{
+  background:#d8b65c;
+  color:#111;
+  border:0;
+  border-radius:50%;
+  width:38px;
+  height:38px;
+  font-size:22px;
+  cursor:pointer;
+  flex-shrink:0;
+}
+@media(max-width:450px){
+  .slide-card{flex-basis:155px}
+}
 </style>
-</head>
-<body>
 
-<header>
-<div class="logo">AS STORE</div>
-<p>PREMIUM ONLINE SHOPPING</p>
-<input class="search" id="search" placeholder="Search your favourite products..." oninput="searchProducts()">
-</header>
+<section class="slider-section">
+<h2 class="slider-title">OUR COLLECTION</h2>
 
-<nav>
-<a href="#">Home</a>
-<a href="#categories">Categories</a>
-<a href="#products">Products</a>
-<a href="#contact">Contact</a>
-<a href="#products">Shopping Bag 🛍️</a>
-</nav>
+<div class="slider-wrap">
+<button class="slide-arrow" onclick="moveProducts(-1)">‹</button>
 
-<section class="hero">
-<h1>WELCOME TO AS STORE</h1>
-<p>Discover your favourite products<br>Shop Smart. Shop with Style.</p>
-<a class="btn" href="#products">SHOP NOW</a>
+<div class="product-slider" id="productSlider">
+
+<div class="slide-card">
+<img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500" alt="Black Cap">
+<h3>Black Cap</h3>
+<p class="slide-price">Rs. 800</p>
+<button onclick="add('Black Cap')">ADD TO BAG</button>
+</div>
+
+<div class="slide-card">
+<img src="https://images.unsplash.com/photo-1521369909029-2afed882baee?w=500" alt="Baseball Cap">
+<h3>Baseball Cap</h3>
+<p class="slide-price">Rs. 1000</p>
+<button onclick="add('Baseball Cap')">ADD TO BAG</button>
+</div>
+
+<div class="slide-card">
+<img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500" alt="Hoodie">
+<h3>Premium Hoodie</h3>
+<p class="slide-price">Rs. 2500</p>
+<button onclick="add('Premium Hoodie')">ADD TO BAG</button>
+</div>
+
+<div class="slide-card">
+<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500" alt="T Shirt">
+<h3>T-Shirt</h3>
+<p class="slide-price">Rs. 1200</p>
+<button onclick="add('T-Shirt')">ADD TO BAG</button>
+</div>
+
+<div class="slide-card">
+<img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500" alt="Sunglasses">
+<h3>Sunglasses</h3>
+<p class="slide-price">Rs. 1500</p>
+<button onclick="add('Sunglasses')">ADD TO BAG</button>
+</div>
+
+<div class="slide-card">
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500" alt="Smart Watch">
+<h3>Smart Watch</h3>
+<p class="slide-price">Rs. 3500</p>
+<button onclick="add('Smart Watch')">ADD TO BAG</button>
+</div>
+
+<div class="slide-card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" alt="Headphones">
+<h3>Headphones</h3>
+<p class="slide-price">Rs. 2500</p>
+<button onclick="add('Headphones')">ADD TO BAG</button>
+</div>
+
+<div class="slide-card">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Shoes">
+<h3>Shoes</h3>
+<p class="slide-price">Rs. 3000</p>
+<button onclick="add('Shoes')">ADD TO BAG</button>
+</div>
+
+</div>
+
+<button class="slide-arrow" onclick="moveProducts(1)">›</button>
+</div>
 </section>
 
-<div class="container" id="categories">
-<h2>SHOP BY CATEGORY</h2>
-<div class="categories">
-<div class="category">🧢<p>Caps</p></div>
-<div class="category">👕<p>Clothing</p></div>
-<div class="category">👟<p>Shoes</p></div>
-<div class="category">⌚<p>Watches</p></div>
-<div class="category">🕶️<p>Accessories</p></div>
-<div class="category">🎧<p>Electronics</p></div>
-</div>
-</div>
-
-<div class="container" id="products">
-<h2>FEATURED PRODUCTS</h2>
-<div class="products" id="productList"></div>
-</div>
-
-<footer id="contact">
-<h2>AS STORE</h2>
-<p>Thank you for shopping with us!</p>
-<p>Customer Support</p>
-<a href="https://wa.me/923290030892">WhatsApp: 03290030892</a>
-<p>© 2026 AS STORE</p>
-</footer>
-
 <script>
-const products=[
-{name:"Black Cap",price:800,image:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500"},
-{name:"Baseball Cap",price:1000,image:"https://images.unsplash.com/photo-1521369909029-2afed882baee?w=500"},
-{name:"Premium Hoodie",price:2500,image:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500"},
-{name:"T-Shirt",price:1200,image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500"},
-{name:"Sunglasses",price:1500,image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500"},
-{name:"Smart Watch",price:3500,image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500"},
-{name:"Headphones",price:2500,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500"},
-{name:"Shoes",price:3000,image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"}
-];
-
-function showProducts(items){
-document.getElementById("productList").innerHTML=items.map(p=>`
-<div class="product">
-<img src="${p.image}" alt="${p.name}">
-<h3>${p.name}</h3>
-<p class="price">Rs. ${p.price}</p>
-<button class="btn" onclick="alert('Shopping cart will be connected in Step 3')">View Product</button>
-</div>`).join("");
+function moveProducts(direction){
+  document.getElementById("productSlider").scrollBy({
+    left:direction*350,
+    behavior:"smooth"
+  });
 }
-
-function searchProducts(){
-let q=document.getElementById("search").value.toLowerCase();
-showProducts(products.filter(p=>p.name.toLowerCase().includes(q)));
-}
-
-showProducts(products);
-</script>
-
-</body>
-</html>
+                                         </script>
+  
