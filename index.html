@@ -3,109 +3,147 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AS STORE | Luxury Shopping</title>
 <style>
-:root{--gold:#d4af37;--black:#090909;--red:#a71919}
+:root{--gold:#d4af37;--red:#a71919;--bg:#0b0b0b;--card:#191919}
 *{box-sizing:border-box}
-body{margin:0;background:#101010;color:white;font-family:Arial,sans-serif}
-header{background:#050505;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--gold);position:sticky;top:0;z-index:5}
-.logo{font-size:27px;color:var(--gold);font-weight:bold;letter-spacing:3px}
-nav{display:flex;gap:15px;flex-wrap:wrap}
-button{cursor:pointer;border:0;border-radius:5px;padding:10px 14px;font-weight:bold}
+body{margin:0;background:var(--bg);color:white;font-family:Arial}
+header{background:#050505;padding:15px 4%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-bottom:1px solid var(--gold);position:sticky;top:0;z-index:9}
+.logo{font-size:28px;color:var(--gold);font-weight:bold;letter-spacing:3px}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+button{border:0;padding:10px 13px;border-radius:5px;font-weight:bold;cursor:pointer}
 .gold{background:var(--gold);color:#111}
-.dark{background:#252525;color:white;border:1px solid #555}
-.hero{padding:55px 20px;text-align:center;background:linear-gradient(120deg,#050505,#292016,#090909)}
-.hero h1{font-size:42px;color:var(--gold);margin:8px}
-.hero p{color:#ddd}
-.section{padding:30px 5%}
-.section h2{color:var(--gold);text-align:center}
-.slider{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.slide{background:linear-gradient(135deg,#252525,#090909);padding:35px 15px;text-align:center;border:1px solid #65501c;border-radius:10px}
-.slide h2{color:var(--gold)}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px}
-.card{background:#1b1b1b;border:1px solid #444;border-radius:10px;overflow:hidden;text-align:center;padding-bottom:15px}
-.pic{height:155px;background:#292929;display:flex;align-items:center;justify-content:center;font-size:65px}
+.red{background:var(--red);color:white}
+.dark{background:#292929;color:white;border:1px solid #555}
+.hero{padding:55px 15px;text-align:center;background:linear-gradient(120deg,#050505,#33230d,#111)}
+.hero h1{font-size:45px;color:var(--gold)}
+.banner{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:15px 5%}
+.banner div{background:#1b1b1b;padding:28px 8px;text-align:center;border:1px solid #80651e;border-radius:10px}
+.banner h2,h2{color:var(--gold)}
+section{padding:25px 5%}
+h2{text-align:center}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:15px}
+.card{background:var(--card);border:1px solid #444;border-radius:9px;text-align:center;overflow:hidden;padding-bottom:14px}
+.pic{height:160px;background:#292929;display:flex;align-items:center;justify-content:center;font-size:60px}
+.pic img{width:100%;height:160px;object-fit:cover}
 .card h3{color:var(--gold)}
-.price{color:#fff;font-weight:bold}
-.card button{margin:4px}
-.panel{background:#1b1b1b;padding:20px;border-radius:10px;margin:18px 0;border:1px solid #555}
-input,select,textarea{width:100%;padding:12px;margin:7px 0;background:#292929;color:white;border:1px solid #666;border-radius:5px}
-footer{text-align:center;padding:30px;background:#050505;color:#bbb}
-a{color:var(--gold)}
-.hidden{display:none}
-.item{padding:10px;border-bottom:1px solid #444}
-.total{color:var(--gold);font-size:22px}
+.panel{background:var(--card);border:1px solid #555;border-radius:9px;padding:17px;margin:15px 0}
+input,select,textarea{width:100%;padding:12px;margin:7px 0;background:#292929;color:white;border:1px solid #555;border-radius:5px}
+.item{padding:12px;border-bottom:1px solid #444}
+.total{font-size:23px;color:var(--gold)}
+.hidden{display:none!important}
+footer{background:#050505;padding:25px;text-align:center;color:#bbb}
+footer a{color:var(--gold)}
+.small{color:#aaa;font-size:13px}
+.slider-controls{text-align:center;padding:10px}
+@media(max-width:600px){.hero h1{font-size:34px}header{justify-content:center}}
 </style>
 </head>
 <body>
+
 <header>
 <div class="logo">AS STORE</div>
 <nav>
+<button class="dark" onclick="show('home')">Home</button>
 <button class="dark" onclick="show('shop')">Shop</button>
 <button class="dark" onclick="show('wishlist')">♡ Wishlist</button>
 <button class="dark" onclick="show('cart')">Bag (<span id="count">0</span>)</button>
-<button class="dark" onclick="show('track')">Track Order</button>
+<button class="dark" onclick="show('account')">Account</button>
+<button class="dark" onclick="show('track')">Tracking</button>
 <button class="gold" onclick="show('admin')">Admin</button>
 </nav>
 </header>
 
+<main id="home">
 <div class="hero">
-<p>PREMIUM COLLECTION</p>
+<p>WELCOME TO PREMIUM SHOPPING</p>
 <h1>AS STORE</h1>
-<p>Style • Quality • Luxury</p>
+<p>STYLE • QUALITY • LUXURY</p>
 <button class="gold" onclick="show('shop')">SHOP NOW</button>
 </div>
 
-<main id="shop">
-<section class="section">
-<h2>FEATURED COLLECTION</h2>
-<div class="slider">
-<div class="slide"><h2>MEN'S COLLECTION</h2><p>Premium fashion essentials</p></div>
-<div class="slide"><h2>ACCESSORIES</h2><p>Luxury everyday style</p></div>
+<div class="banner">
+<div><h2>MEN'S COLLECTION</h2><p>Wallet • Belt • Shirts</p></div>
+<div><h2>TECH COLLECTION</h2><p>Mobiles • Accessories</p></div>
 </div>
+
+<section>
+<h2>FEATURED COLLECTION</h2>
+<div id="featured" class="products"></div>
 </section>
-<section class="section">
+<section>
 <h2>SHOP BY CATEGORY</h2>
-<div class="products" id="products"></div>
+<div class="products">
+<button class="gold" onclick="category('Fashion')">Fashion</button>
+<button class="gold" onclick="category('Mobiles')">Mobiles</button>
+<button class="gold" onclick="category('Accessories')">Accessories</button>
+<button class="gold" onclick="category('All')">All Products</button>
+</div>
 </section>
 </main>
 
-<section id="wishlist" class="section hidden">
-<h2>♡ MY WISHLIST</h2><div id="wishItems"></div>
+<section id="shop" class="hidden">
+<h2>OUR PRODUCTS</h2>
+<input id="search" placeholder="Search products..." oninput="renderProducts()">
+<div id="products" class="products"></div>
 </section>
 
-<section id="cart" class="section hidden">
+<section id="wishlist" class="hidden">
+<h2>MY WISHLIST ♡</h2>
+<div id="wishItems" class="products"></div>
+</section>
+
+<section id="cart" class="hidden">
 <h2>SHOPPING BAG & BILLING</h2>
 <div class="panel" id="cartItems"></div>
 <div class="panel">
-<label>Discount Coupon</label>
-<input id="coupon" placeholder="Enter AS10">
-<button class="gold" onclick="applyCoupon()">Apply Coupon</button>
-<p id="discountText"></p>
+<input id="coupon" placeholder="Discount Coupon (AS10)">
+<button class="gold" onclick="applyCoupon()">APPLY COUPON</button>
+<p id="couponMsg"></p>
+<p>Subtotal: Rs. <span id="subtotal">0</span></p>
+<p>Delivery: Rs. <span id="delivery">0</span></p>
 <h3 class="total">Total: Rs. <span id="total">0</span></h3>
 <button class="gold" onclick="show('checkout')">CHECKOUT</button>
 </div>
 </section>
 
-<section id="checkout" class="section hidden">
-<h2>CHECKOUT & BILLING</h2>
+<section id="account" class="hidden">
+<h2>CUSTOMER DETAILS</h2>
+<div class="panel">
+<input id="accName" placeholder="Your Name">
+<input id="accPhone" placeholder="Mobile Number">
+<textarea id="accAddress" placeholder="Delivery Address"></textarea>
+<button class="gold" onclick="saveAccount()">SAVE DETAILS</button>
+<p id="accountMsg"></p>
+</div>
+</section>
+
+<section id="checkout" class="hidden">
+<h2>CHECKOUT & PAYMENT</h2>
 <div class="panel">
 <input id="customer" placeholder="Customer Name">
 <input id="phone" placeholder="Mobile Number">
-<textarea id="address" placeholder="Complete Delivery Address"></textarea>
-<p>Payment Method</p>
+<textarea id="address" placeholder="Complete Address"></textarea>
 <select id="payment">
 <option>JazzCash</option>
 <option>Easypaisa</option>
 <option>Bank Transfer</option>
 </select>
-<p>Payment details business owner se hasil karein. Order submit karne par payment automatically verified nahi hogi.</p>
+<div class="panel">
+<h3>PAYMENT DETAILS</h3>
+<p>JazzCash: [YOUR BUSINESS ACCOUNT]</p>
+<p>Easypaisa: [YOUR BUSINESS ACCOUNT]</p>
+<p>Bank: [YOUR BANK DETAILS]</p>
+<p class="small">Payment verification will be done by store owner.</p>
+</div>
+<p>Delivery: Rs. <span id="checkoutDelivery">0</span></p>
+<h3 class="total">Total: Rs. <span id="checkoutTotal">0</span></h3>
 <button class="gold" onclick="placeOrder()">PLACE ORDER</button>
 </div>
 </section>
 
-<section id="track" class="section hidden">
+<section id="track" class="hidden">
 <h2>ORDER TRACKING</h2>
 <div class="panel">
 <input id="trackId" placeholder="Enter Order ID">
@@ -114,123 +152,203 @@ a{color:var(--gold)}
 </div>
 </section>
 
-<section id="reviews" class="section">
-<h2>CUSTOMER REVIEWS</h2>
+<section id="reviews">
+<h2>CUSTOMER REVIEWS ⭐</h2>
 <div class="panel">
 <input id="reviewName" placeholder="Your Name">
 <select id="stars"><option>5 Stars</option><option>4 Stars</option><option>3 Stars</option></select>
-<textarea id="reviewText" placeholder="Write your review"></textarea>
+<textarea id="reviewText" placeholder="Write review"></textarea>
 <button class="gold" onclick="addReview()">SUBMIT REVIEW</button>
 <div id="reviewList"></div>
 </div>
 </section>
 
-<section id="admin" class="section hidden">
-<h2>ADMIN DASHBOARD</h2>
+<section id="admin" class="hidden">
+<h2>ADMIN DASHBOARD 👑</h2>
 <div class="panel" id="login">
 <input id="adminUser" placeholder="Username">
 <input id="adminPass" type="password" placeholder="Password">
-<button class="gold" onclick="login()">LOGIN</button>
+<button class="gold" onclick="loginAdmin()">LOGIN</button>
 <p id="loginMsg"></p>
 </div>
 <div id="dashboard" class="hidden">
-<h3>Store Management</h3>
-<p>Total Orders: <span id="orderCount">0</span></p>
+<h3>Total Orders: <span id="orderCount">0</span></h3>
 <div id="orders"></div>
-<h3>Add New Product</h3>
+<h3>ADD PRODUCT</h3>
 <input id="newName" placeholder="Product Name">
 <input id="newPrice" type="number" placeholder="Price">
-<input id="newImage" placeholder="Image URL (optional)">
+<select id="newCategory">
+<option>Fashion</option><option>Mobiles</option><option>Accessories</option>
+</select>
+<input id="newImage" placeholder="Product Image URL">
 <button class="gold" onclick="addProduct()">ADD PRODUCT</button>
-<h3>Coupon: AS10 = 10% discount</h3>
+<h3>MANAGE PRODUCTS</h3>
+<div id="manageProducts"></div>
 <button class="dark" onclick="logout()">LOGOUT</button>
 </div>
 </section>
 
 <footer>
-<h2 style="color:#d4af37">AS STORE</h2>
+<h2>AS STORE</h2>
 <p>Premium Shopping Experience</p>
-<p>Customer Support: <a href="https://wa.me/923290030892">WhatsApp 03290030892</a></p>
+<p>Customer Support</p>
+<a href="https://wa.me/923290030892">WhatsApp 03290030892</a>
 <p>© 2026 AS STORE</p>
 </footer>
 
 <script>
 let products=[
-{id:1,name:"Black Leather Belt",price:1800,emoji:"🖤"},
-{id:2,name:"Premium Leather Wallet",price:2200,emoji:"👛"},
-{id:3,name:"Premium Paint",price:2500,emoji:"👖"},
-{id:4,name:"Classic Shirt",price:2000,emoji:"👔"}
+{id:1,name:"Black Leather Belt",price:1800,category:"Fashion",emoji:"🖤"},
+{id:2,name:"Premium Leather Wallet",price:2200,category:"Fashion",emoji:"👛"},
+{id:3,name:"Premium Paint",price:2500,category:"Fashion",emoji:"👖"},
+{id:4,name:"Classic Shirt",price:2000,category:"Fashion",emoji:"👔"},
+{id:5,name:"iPhone",price:50000,category:"Mobiles",emoji:"📱"},
+{id:6,name:"Android Mobile",price:25000,category:"Mobiles",emoji:"📱"},
+{id:7,name:"AirPods",price:3500,category:"Accessories",emoji:"🎧"},
+{id:8,name:"Mobile Charger",price:1200,category:"Accessories",emoji:"🔌"}
 ];
-let cart=[],wish=[],orders=[],reviews=[],discount=0;
+let cart=[],wishlist=[],orders=[],reviews=[],discount=0;
+let deliveryCharge=200;
 
 function show(id){
-document.querySelectorAll('main,body>section').forEach(x=>x.classList.add('hidden'));
-let el=document.getElementById(id);
-if(el)el.classList.remove('hidden');
+document.querySelectorAll('main,body>section').forEach(e=>e.classList.add('hidden'));
+document.getElementById(id).classList.remove('hidden');
+if(id==='shop')renderProducts();
 if(id==='cart')renderCart();
-if(id==='wishlist')renderWish();
+if(id==='wishlist')renderWishlist();
+if(id==='checkout')updateBill();
+if(id==='admin')renderAdmin();
 }
-function renderProducts(){
-document.getElementById('products').innerHTML=products.map(p=>`
+function category(c){
+show('shop');
+search.value='';
+renderProducts(c);
+}
+function renderProducts(filter='All'){
+let q=search.value.toLowerCase();
+let list=products.filter(p=>(filter==='All'||p.category===filter)&&p.name.toLowerCase().includes(q));
+productsBox(list);
+}
+function productsBox(list){
+products.innerHTML=list.map(p=>`
 <div class="card">
-<div class="pic">${p.image?`<img src="${p.image}" style="width:100%;height:155px;object-fit:cover">`:p.emoji}</div>
-<h3>${p.name}</h3><p class="price">Rs. ${p.price}</p>
+<div class="pic">${p.image?`<img src="${p.image}">`:p.emoji}</div>
+<h3>${p.name}</h3><p>Rs. ${p.price}</p>
 <button class="gold" onclick="addCart(${p.id})">ADD TO BAG</button>
 <button class="dark" onclick="addWish(${p.id})">♡</button>
 </div>`).join('');
 }
-function addCart(id){cart.push(id);document.getElementById('count').textContent=cart.length;alert('Product added to bag');}
-function addWish(id){if(!wish.includes(id))wish.push(id);alert('Added to wishlist');}
-function renderWish(){wishItems.innerHTML=wish.map(id=>{let p=products.find(x=>x.id===id);return p?`<div class="item">${p.name} - Rs. ${p.price}</div>`:''}).join('');}
+function renderFeatured(){
+featured.innerHTML=products.slice(0,4).map(p=>`
+<div class="card"><div class="pic">${p.image?`<img src="${p.image}">`:p.emoji}</div>
+<h3>${p.name}</h3><p>Rs. ${p.price}</p>
+<button class="gold" onclick="addCart(${p.id})">ADD TO BAG</button>
+</div>`).join('');
+}
+function addCart(id){
+cart.push(id);
+count.textContent=cart.length;
+alert('Product added to bag');
+}
+function addWish(id){
+if(!wishlist.includes(id))wishlist.push(id);
+alert('Added to Wishlist');
+}
+function renderWishlist(){
+wishItems.innerHTML=wishlist.map(id=>{
+let p=products.find(x=>x.id===id);
+return p?`<div class="card"><h3>${p.name}</h3><p>Rs. ${p.price}</p>
+<button class="gold" onclick="addCart(${id})">ADD TO BAG</button>
+<button class="red" onclick="removeWish(${id})">REMOVE</button></div>`:'';
+}).join('');
+}
+function removeWish(id){wishlist=wishlist.filter(x=>x!==id);renderWishlist();}
 function renderCart(){
 let sum=0;
-cartItems.innerHTML=cart.map((id,i)=>{let p=products.find(x=>x.id===id);if(!p)return'';sum+=p.price;return `<div class="item">${p.name} - Rs. ${p.price} <button onclick="removeCart(${i})">Remove</button></div>`}).join('');
+cartItems.innerHTML=cart.map((id,i)=>{
+let p=products.find(x=>x.id===id);
+if(!p)return'';
+sum+=p.price;
+return `<div class="item">${p.name} - Rs. ${p.price}
+<button class="dark" onclick="removeCart(${i})">REMOVE</button></div>`;
+}).join('');
 let final=Math.round(sum*(1-discount));
-total.textContent=final;
+subtotal.textContent=sum;
+delivery.textContent=cart.length?deliveryCharge:0;
+total.textContent=final+(cart.length?deliveryCharge:0);
 }
 function removeCart(i){cart.splice(i,1);count.textContent=cart.length;renderCart();}
 function applyCoupon(){
-if(coupon.value.trim().toUpperCase()==='AS10'){discount=.10;discountText.textContent='10% discount applied';}
-else{discount=0;discountText.textContent='Invalid coupon';}
+if(coupon.value.trim().toUpperCase()==='AS10'){
+discount=.10;couponMsg.textContent='10% discount applied';
+}else{discount=0;couponMsg.textContent='Invalid coupon';}
 renderCart();
 }
+function updateBill(){renderCart();checkoutDelivery.textContent=delivery.textContent;checkoutTotal.textContent=total.textContent;}
+function saveAccount(){
+localStorage.setItem('asAccount',JSON.stringify({name:accName.value,phone:accPhone.value,address:accAddress.value}));
+accountMsg.textContent='Saved on this browser';
+}
 function placeOrder(){
-let name=customer.value.trim(),phoneNo=phone.value.trim(),addr=address.value.trim();
-if(!cart.length||!name||!phoneNo||!addr){alert('Please fill all fields and add products');return;}
+if(!cart.length||!customer.value.trim()||!phone.value.trim()||!address.value.trim()){
+alert('Fill all details and add products');return;
+}
 let id='AS'+Date.now().toString().slice(-7);
-let order={id,name,phone:phoneNo,address:addr,payment:payment.value,status:'Received',items:[...cart],amount:total.textContent};
+let order={id,name:customer.value,phone:phone.value,address:address.value,payment:payment.value,status:'Received',items:cart.map(x=>({...products.find(p=>p.id===x)})),amount:total.textContent};
 orders.push(order);
-alert('Order received! Your Order ID: '+id);
-cart=[];discount=0;count.textContent=0;show('track');trackId.value=id;trackOrder();
+let message=`AS STORE ORDER\nOrder ID: ${id}\nName: ${order.name}\nPhone: ${order.phone}\nAddress: ${order.address}\nPayment: ${order.payment}\nProducts:\n${order.items.map(p=>p.name+' Rs.'+p.price).join('\n')}\nTotal: Rs.${order.amount}`;
+cart=[];count.textContent=0;discount=0;
+alert('Order ID: '+id);
+window.open('https://wa.me/923290030892?text='+encodeURIComponent(message),'_blank');
+show('track');trackId.value=id;trackOrder();
 }
 function trackOrder(){
 let o=orders.find(x=>x.id===trackId.value.trim());
-trackResult.textContent=o?'Order '+o.id+' | Status: '+o.status:'Order not found on this browser.';
+trackResult.textContent=o?'Order '+o.id+' | Status: '+o.status:'Order not found on this browser';
 }
 function addReview(){
-if(!reviewName.value.trim()||!reviewText.value.trim())return alert('Enter name and review');
+if(!reviewName.value.trim()||!reviewText.value.trim())return alert('Enter review');
 reviews.push({name:reviewName.value,text:reviewText.value,stars:stars.value});
 reviewList.innerHTML=reviews.map(r=>`<div class="item"><b>${r.name}</b> ⭐ ${r.stars}<p>${r.text}</p></div>`).join('');
 }
-function login(){
+function loginAdmin(){
 if(adminUser.value==='admin'&&adminPass.value==='ASstore@2026!'){
-login.classList.add('hidden');dashboard.classList.remove('hidden');renderOrders();
-}else loginMsg.textContent='Incorrect login details';
+login.classList.add('hidden');dashboard.classList.remove('hidden');renderAdmin();
+}else loginMsg.textContent='Incorrect username or password';
 }
 function logout(){dashboard.classList.add('hidden');login.classList.remove('hidden');}
-function renderOrders(){
+function renderAdmin(){
 orderCount.textContent=orders.length;
-ordersDiv=document.getElementById('orders');
-ordersDiv.innerHTML=orders.map(o=>`<div class="item">#${o.id} - ${o.name} - Rs.${o.amount} - ${o.status}<br><button onclick="changeStatus('${o.id}')">Mark Shipped</button></div>`).join('');
+ordersDiv.innerHTML=orders.map(o=>`<div class="item">#${o.id} | ${o.name} | Rs.${o.amount} | ${o.status}
+<button class="gold" onclick="changeStatus('${o.id}','Shipped')">SHIPPED</button>
+<button class="dark" onclick="changeStatus('${o.id}','Delivered')">DELIVERED</button></div>`).join('');
+manageProducts.innerHTML=products.map(p=>`<div class="item">${p.name} Rs.${p.price}
+<button class="dark" onclick="editProduct(${p.id})">EDIT</button>
+<button class="red" onclick="deleteProduct(${p.id})">DELETE</button></div>`).join('');
 }
-function changeStatus(id){let o=orders.find(x=>x.id===id);if(o){o.status='Shipped';renderOrders();}}
+function changeStatus(id,status){let o=orders.find(x=>x.id===id);if(o){o.status=status;renderAdmin();}}
 function addProduct(){
 let name=newName.value.trim(),price=Number(newPrice.value);
-if(!name||price<=0)return alert('Enter valid product details');
-products.push({id:Date.now(),name,price,emoji:'🛍️',image:newImage.value.trim()});
-renderProducts();alert('Product added');
+if(!name||price<=0)return alert('Enter valid details');
+products.push({id:Date.now(),name,price,category:newCategory.value,emoji:'🛍️',image:newImage.value.trim()});
+renderProducts();renderFeatured();renderAdmin();alert('Product added');
 }
-renderProducts();
+function deleteProduct(id){
+products=products.filter(p=>p.id!==id);
+cart=cart.filter(x=>x!==id);
+count.textContent=cart.length;
+renderProducts();renderFeatured();renderAdmin();
+}
+function editProduct(id){
+let p=products.find(x=>x.id===id);
+let name=prompt('New name',p.name);
+if(name===null)return;
+let price=Number(prompt('New price',p.price));
+if(!name.trim()||price<=0)return alert('Invalid details');
+p.name=name.trim();p.price=price;
+renderProducts();renderFeatured();renderAdmin();
+}
+renderFeatured();
 </script>
 </body>
  </html>
